@@ -1,0 +1,76 @@
+/*
+Dark Blue: #00507E
+Light Blue: #0080C8
+Lightest Blue: #03A4D2
+*/
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
+h1,h2,h3,h4,h5,h6,i {
+    color: #0080C8;
+}
+body, html {
+    height: 100%;
+    color: black;
+    line-height: 1.8;
+}
+a {
+    padding: 5px;
+}
+p {
+    text-indent: 50px;
+}
+#navbar {
+    background-color: white;
+    color: #0080C8;
+    font-family: 
+}
+.button {
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px 16px;
+}
+.button:hover {
+    background: rgba(0,80,126, 0.4);
+    color: #00507E;
+    text-decoration: none;
+    padding: 8px 16px;
+}
+button {
+    color: #00507E;
+    background-color: white;
+    border: 1px solid #ccc;
+}
+.w3-wide {letter-spacing: 10px;}
+.w3-hover-opacity {cursor: pointer;}
+footer {
+    text-align: center;
+    padding-top: 64px;
+    padding-bottom: 64px;
+    background-color: #00507E;
+}
+a.button.footer, i.footer {
+    color: #03A4D2;
+
+}
+a.button.footer:hover, i.footer:hover {
+    color: #0080C8;
+}
+div.plans {
+    border: 1px solid #ccc;
+    margin: 0px 5px;
+    padding: 5px 0px;
+}
+div.plans.disclaimer {
+    border: 1px solid rgb(255, 255, 255);
+    padding: 0px 0px;
+}
+ul.plans {
+    padding-left: 20px;
+    text-align: left;
+}
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1600px) {
+    .bgimg-1, .bgimg-2, .bgimg-3 {
+        background-attachment: scroll;
+        min-height: 400px;
+    }
+}
