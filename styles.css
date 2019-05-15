@@ -60,6 +60,7 @@ a.button.footer, i.footer {
 a.button.footer:hover, i.footer:hover {
     color: #0080C8;
 }
+
 div.plans {
     border: 1px solid #ccc;
     margin: 0px 5px;
