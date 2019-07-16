@@ -1,197 +1,80 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Turn it on</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-    <link href="https://fonts.googleapis.com/css?family=Pacifico|Raleway:600" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>Criminal Minds Episode Randomizer</title>
+<style>
+body {
+    margin: 0px;
+}
+h2 {
+    margin-block-end: 0em;
+    margin-block-start: 0em;
+    color: #7d2b1f;
+    font-family: impact;
+    padding-left: 20px;
+    padding-bottom: 10px;
+}
+#header {
+    background-color: #000000;
+}
+button {
+	background-color:#000000;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:20px;
+	padding:6px 25px;
+	text-decoration:none;
+}
+button:hover {
+	background-color:#7d2b1f;
+}
+button:active {
+	position:relative;
+	top:1px;
+}
+#body {
+    margin-top: 15px;
+    margin-left: 10px;
+}
+#output {
+    font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+<script>
+    function Randomizer() {
+    var EpisodeNames = [["Extreme Aggressor","Compulsion","Won't Get Fooled Again","Plain Sight","Broken Mirror","L.D.S.K.","The Fox","Natural Born Killer","Derailed","The Popular Kids","Blood Hungry","What Fresh Hell","Poison","Riding the Lightning","Unfinished Business","The Tribe","A Real Rain","Somebody's Watching","Machismo","Charm and Harm","Secrets and Lies","The Fisher King, Part 1"],
+							       ["The Fisher King, Part 2","P911","The Perfect Storm","Psychodrama","Aftermath","The Boogeyman","North Mammon","Empty Planet","The Last Word","Lessons Learned","Sex, Birth, Death","Profiler, Profiled","No Way Out","The Big Game","Revelations","Fear and Loathing","Distress","Jones","Ashes and Dust","Honor Among Thieves","Open Season","Legacy","No Way Out, Part II: The Evilution of Frank"],
+							       ["Doubt","In Name and Blood","Scared to Death","Children of the Dark","Seven Seconds","About Face","Identity","Lucky","Penelope","True Night","Birthright","3rd Life","Limelight","Damaged","A Higher Power","Elephant's Memory","In Heat","The Crossing","Tabula Rasa","Lo-Fi"],
+							       ["Mayhem","The Angel Maker","Minimal Loss","Paradise","Catching Out","The Instincts","Memoriam","Masterpiece","52 Pickup","Brothers in Arms","Normal","Soul Mates","Bloodline","Cold Comfort","Zoe's Reprise","Pleasure Is My Business","Demonology","Omnivore","House on Fire","Conflicted","A Shade of Gray","The Big Wheel","Roadkill","Amplification","To Hell…","…And Back"],
+							       ["Nameless, Faceless","Haunted","Reckoner","Hopeless","Cradle to Grave","The Eyes Have It","The Performer","Outfoxed","100","The Slave of Duty","Retaliation","The Uncanny Valley","Risky Business","Parasite","Public Enemy","Mosley Lane","Solitary Man","The Fight","A Rite of Passage","…A Thousand Words","Exit Wounds","The Internet Is Forever","Our Darkest Hour"],
+							       ["The Longest Night","JJ","Remembrance of Things Past","Compromising Positions","Safe Haven","Devil's Night","Middle Man","Reflection of Desire","Into the Woods","What Happens at Home","25 to Life","Corazon","The Thirteenth Step","Sense Memory","Today I Do","Coda","Valhalla","Lauren","With Friends Like These...","Hanley Waters","The Stranger","Out of the Light","Big Sea","Supply & Demand",],
+							       ["It Takes a Village","Proof","Dorado Falls","Painless","From Childhood's Hour","Epilogue","There's No Place Like Home","Hope","Self-Fulfilling Prophecy","The Bittersweet Science","True Genius","Unknown Subject","Snake Eyes","Closing Time","A Thin Line","A Family Affair","I Love You, Tommy Brown","Foundation","Heathridge Manor","The Company","Divining Rod","Profiling 101","Hit","Run"],
+							       ["The Silencer","The Pact","Through the Looking Glass","God Complex","The Good Earth","The Apprenticeship","The Fallen","The Wheels on the Bus…","Magnificent Light","The Lesson","Perennials","Zugzwang","Magnum Opus","All That Remains","Broken","Carbon Copy","The Gathering","Restoration","Pay It Forward","Alchemy","Nanny Dearest","#6","Brothers Hotchner","The Replicator"],
+							       ["The Inspiration","The Inspired","Final Shot","To Bear Witness","Route 66","In the Blood","Gatekeeper","The Return","Strange Fruit","The Caller","Bully","The Black Queen","The Road Home","200","Mr. & Mrs. Anderson","Gabby","Persuasion","Rabid","The Edge of Winter","Blood Relations","What Happens In Mecklinburg…","Fatal","Angels","Demons"],
+							       ["X","Burn","A Thousand Suns","The Itch","Boxed In","If the Shoe Fits","Hashtag","The Boys of Sudworth Place","Fate","Amelia Porter","The Forever People","Anonymous","Nelson's Sparrow","Hero Worship","Scream","Lockdown","Breath Play","Rock Creek Park","Beyond Borders","A Place at the Table","Mr. Scratch","Protection","The Hunt"],
+							       ["The Job","The Witness","'Til Death Do Us Part","Outlaw","The Night Watch","Pariahville","Target Rich","Awake","Internal Affairs","Future Perfect","Entropy","Drive","The Bond","Hostage","A Badge and a Gun","Derek","The Sandman","A Beautiful Disaster","Tribute","Inner Beauty","Devil's Backbone","The Storm"],
+							       ["The Crimson King","Sick Day","Taboo","Keeper","The Anti-Terror Squad","Elliott's Pond","Mirror Image","Scarecrow","Profiling 202","Seek and Destroy","Surface Tension","A Good Husband","Spencer","Collision Course","Alpha Male","Assistance Is Futile","In The Dark","Hell's Kitchen","True North","Unforgettable","Green Light","Red Light"],
+							       ["Wheels Up","To A Better Place","Blue Angel","Killer App","Lucky Strikes","The Bunker","Dust and Bones","Neon Terror","False Flag","Submerged","Full-Tilt Boogie","Bad Moon on the Rise","Cure","Miasma","Annihilator","Last Gasp","The Capilanos","The Dance of Love","Ex Parte","All You Can Eat","Mixed Signals","Believer"],
+							       ["300","Starter Home","Rule 34","Innocence","The Tall Man","Luke","Twenty Seven","Ashley","Broken Wing","Flesh and Blood","Night Lights","Hamelin","Chameleon","Sick and Evil","Truth or Dare"]];
+        var S = Math.floor(Math.random() * EpisodeNames.length);
+        var E = Math.floor(Math.random() * EpisodeNames[S].length);
+        document.getElementById("output").innerHTML = "S"+(S+1)+" E"+(E+1)+": "+EpisodeNames[S][E];
+    }
+
+</script>
 </head>
 <body>
-
-<!-- Navbar (sit on top) -->
-<div class="w3-top">
-    <div class="w3-bar" id="navbar">
-        <a id="title" href="#about" class="w3-bar-item button navbar">Turn it on</a>
-        <a href="#about" class="w3-bar-item button navbar">About</a>
-        <a href="#howitworks" class="w3-bar-item button navbar">How it Works</a>
-        <a href="#plans" class="w3-bar-item button navbar">Plans</a>
-        <a href="#download" class="w3-bar-item button navbar">Download</a>
-        <a href="#contact" class="w3-bar-item button navbar">Contact Us</a>
-    </div>
+<div id="header">
+    <img src="CriminalMinds.png" style="height: 20%; width:20%;">
+    <h2>Episode Randomizer</h2>
 </div>
 
-<!-- Container (About Section) -->
-<div class="w3-content w3-container w3-padding-64" id="about">
-    <h3 id="headabout" class="w3-center">About Turn it on</h3>
-    <p>Finding the light switch in the dark is a blind folded game usually ending with your pinky toe hitting the edge of something. 
-            “Turn it on” is an app that would connect to the blue lights and switch in your house, turning them on before you enter a room, 
-            saving your toes from being crushed. You also no longer have to have to fumble for keys in your bag, the app would be able to 
-            connect to Bluetooth locks and alarm system on your house and car, locking and unlocking them as you enter and leave. 
-            “Turn it on” is great for those who are always in a rush or can never find their keys in their bag, so everyone. 
-            Bluetooth locks, light switch, lightbulbs, and other similar products have been around for a while, but they still 
-            require you to unlock it from your phone. “Turn it on” gives you hands free access to your home, car, and other Bluetooth enabled devices near you.</p>
-    <div class="w3-row">
-        <div class="w3-col m6 w3-center w3-padding-large">
-        </br>
-            <img src="images/TurnItOnLogo.png" class="w3-round w3-image" alt="Company Logo" width="500" height="333">
-    </div>
-
-    <div id="howitworks" class="w3-col m6 w3-hide-small w3-padding-large">
-    <h3 class="w3-center">How it Works</h3>
-        <p>Using the already available Bluetooth locks, light switch, and lightbulbs,
-             “Turn it on” works by connecting the local network of your house or other 
-             saved locations in order to access and turn them on and off. 
-             The security of this app was important when planning it, ensuring that it cannot be 
-             hacked due to what will be connected through the app. Restricting the app to have to connect 
-             to the network to gain access to the connect Bluetooth devices means that the app cannot 
-             control switches must have the username and password of that network. </p>
-    </div>
-    </div>
-    </div>
-</div>
-<div id="plans" class="w3-content w3-container">
-        <h3 class="w3-center">Plans</h3>
-        
-        <div class="w3-row-padding w3-center">
-            <div class="plans w3-col m3 w3-center">
-                <h4>Basic</h4>
-                <ul class="plans">
-                    <li>Free Version</li>
-                    <li>Allows 6 Devices to be connected</li>
-                    <li>3 Monthly Resets</li>
-                </ul>
-            </div>
-    
-            <div class="plans w3-col m3 w3-center">
-                <h4>Premium</h4>
-                <ul class="plans">
-                    <li>$8.99/per Month</li>
-                    <li>Allows 20 Devices to be connected</li>
-                    <li>6 Monthly Resets</li>
-                </ul>
-            </div>
-
-            <div class="plans w3-col m3 w3-center" style="padding: 0px 5px;">
-                <h4>Unlimited</h4>
-                <ul class="plans">
-                    <li>$14.99/per Month</li>
-                    <li>Allows Unlimited Devices to be connected</li>
-                    <li>Unlimited Monthly Resets</li>
-                </ul>
-            </div>
-            <div class="plans disclaimer w3-col m6 w3-center">
-                <ul class="plans" style="margin: 0px; font-size: 10px; color: #00507E;">
-                        <li>Monthly Resets allow you to change a connect device to a different one</li>
-                        <li>Allowed resets are reset every month</li>
-                </ul>
-            </div>
-        </div>
-</div>
-<div id="download" class="w3-content w3-container w3-padding-64">
-    <h3 class="w3-center">Download</h3>
-    <p class="w3-center">Download the Turn It on app, available on both Android and IOS</p>
-    
-    <div class="w3-row-padding w3-center">
-        <div class="w3-col m6 w3-center">
-            <a href="https://www.apple.com/ios/app-store/">
-                <img src="images/AppStore.png"style="width:70%"></a>
-        </div>
-
-        <div class="w3-col m6 w3-center">
-            <a href="https://www.google.com/aclk?sa=l&ai=DChcSEwjPv8bl15ziAhURUQ0KHUxGAyYYABABGgJxYg&sig=AOD64_3saqALwaeh9iWcwIXCDuc65V2ZOw&adurl=&q=&ved=2ahUKEwjpj73l15ziAhWEg-AKHWkTCxcQqyQoAHoECAoQBA">
-                <img src="images/GooglePlay.png"style="width:70%"></a>
-        </div>
-    </div>
-    <br/>
-    <h3 class="w3-center">Connectable Devices</h3>
-    <p class="w3-center">Here are some of the devices that you can connect using Turn It On</p><br>
-
-    <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
-    <div class="w3-row-padding w3-center">
-        <div class="w3-col m3">
-            <a href="https://store.google.com/us/product/smart_light_bundles?sku=_google_home_mini_chalk_ge_smart_bulb_bundle&gclid=Cj0KCQjwn8_mBRCLARIsAKxi0GIQcvg2RPqPOSU3GKJDc7r3lxCW2ZoIO9hEwql_-tdbedIHm2wUamcaAtbjEALw_wcB&gclsrc=aw.ds&srp=/us/product/smart_light_starter_kit">
-                <img src="images/light.png" style="width:100%; padding:5px;"></a>
-            </br>
-               <a href="https://www.homedepot.com/p/Lutron-2-Button-Pico-Remote-Control-for-Caseta-Wireless-Switch-White-PJ2-2B-GWH-L01/300981102?cm_mmc=Shopping%7CG%7CVF%7CD27E%7C27-2_WIRING_DEVICES%7CNA%7CPLA%7C71700000033102358%7C58700003867202208%7C92700031086353460&gclid=CjwKCAjw8e7mBRBsEiwAPVxxiCV1xdAd8PgRVvYReVgJbzOvLTpUgIirbT1BBPRFkA9y2KbXgm7YkhoCOKcQAvD_BwE&gclsrc=aw.ds">
-                <img src="images/lightSwitch2.jpg" style="width:100%; padding:5px;"></a>
-        </div>
-
-        <div class="w3-col m3">
-            <a href="https://www.googleadservices.com/pagead/aclk?sa=L&ai=DChcSEwiR2Njw8Y7iAhUPcYYKHQvCDQMYABAGGgJ2dQ&ohost=www.google.com&cid=CAESQOD2mSLLtN88ywnYZT-VABCj3O5E7NXxjrFJU9jbt08ubB-sMWwr1LrVJ9TEGBAUvs3a6nZv2kF-Hg-ytevV1CM&sig=AOD64_1tURQZNMpgR4kFHZGPDFPyv4BTOg&ctype=5&q=&ved=0ahUKEwip5NHw8Y7iAhVlvlkKHWpTCEMQ9aACCDg&adurl=">
-                <img src="images/lightSwitch.png" style="width:100%; padding:5px"></a>
-            </br>
-                <a href="https://www.staples.com/TP-LINK-Smart-Wi-Fi-Light-Switch-HS200/product_2425729?adlpxid=pla;300133015623;325594113026;c;9004405;pla-300133015623;2425729;pla;local;106&gclid=CjwKCAjw8e7mBRBsEiwAPVxxiIOqlOTZJfFu6tQSbFqnaFXEs0gyrX8wxR7-HMoHs1JZY-2xaAq6AhoCSJAQAvD_BwE">
-                    <img src="images/lightSwitch3.jpg" style="width:100%; padding:5px;"></a>
-        </div>
-
-        <div class="w3-col m3">
-            <a href="https://www.amazon.com/Amazon-Smart-Plug-works-Alexa/dp/B01MZEEFNX/ref=sr_1_1_sspa?gclid=Cj0KCQjwn8_mBRCLARIsAKxi0GLhUaEN3S15gyTfX577nW4hAnoNAyqfZmF7h3b94EbIZ_8z7w27y6gaAr-nEALw_wcB&hvadid=153679016608&hvdev=c&hvlocphy=9004338&hvnetw=g&hvpos=1t1&hvqmt=e&hvrand=1889957044777556959&hvtargid=kwd-5173587502&hydadcr=25938_9540024&keywords=bluetooth+light+switch&qid=1557694967&s=gateway&sr=8-1-spons&psc=1">
-                <img src="images/Outlet.jpg" style="width:100%; padding:5px;"></a>
-            </br>
-            <a href="https://www.google.com/imgres?imgurl=https%3A%2F%2Fwidmertime.com%2Fwp-content%2Fuploads%2F2016%2F11%2FWidmer-NB-1-300x300-300x300.png&imgrefurl=https%3A%2F%2Fwidmertime.com%2Fproduct%2Fwidmer-nb-1-nfc-and-bluetooth-electronic-door-lock%2F&docid=Y0SBP2Rkz1dISM&tbnid=_12yaIGg3sgTXM%3A&vet=10ahUKEwi36dfspZ7iAhVrmuAKHR0fA1sQMwinAyhDMEM..i&w=300&h=300&client=safari&bih=1207&biw=1030&q=bluetooth%20door%20lock&ved=0ahUKEwi36dfspZ7iAhVrmuAKHR0fA1sQMwinAyhDMEM&iact=mrc&uact=8">
-                <img src="images/doorLock3.jpg" style="width:100%; padding:5px;"></a>
-        </div>
-
-        <div class="w3-col m3">
-            <a href="https://www.amazon.com/gp/product/B01JJ0YYWG?tag=uid705600-20">
-                <img src="images/doorLock.jpg" style="width:100%; padding:5px;"></a>
-            </br>
-            <a href="https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=2ahUKEwjrwK_tpZ7iAhWrnOAKHe4HDzQQjxx6BAgBEAI&url=https%3A%2F%2Fwww.ebay.co.uk%2Fitm%2FKeyless-Bluetooth-Smart-Digital-Door-Lock-APP-Control-Touch-Password-Security-%2F192135660017&psig=AOvVaw12XQEAZO5Ju62wh94uRbBD&ust=1558035817402220">
-                <img src="images/doorLock2.jpg" style="width:100%; padding:5px;"></a>
-        </div>
-    </div>
+<div id="body">
+<button onclick="Randomizer()">New Episode?</button>
+<p id="output"></p>
 </div>
 
-
-<!-- Container (Contact Section) --> 
-<div class="w3-content w3-container w3-padding-64" id="contact">
-  <h3 class="w3-center">Contact Us</h3>
-  <p class="w3-center"><em>We would love your feedback!</em></p>
-
-  <div class="w3-row w3-section">
-    <div class="w3-col m4 w3-container">
-      <img src="images/DumboColor.jpg" class="w3-image w3-round" style="width:100%">
-    </div>
-    <div class="w3-col m8 w3-panel">
-      <div class="w3-large w3-margin-bottom">
-        <i class="fa fa-map-marker fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i>Brooklyn, New York<br>
-        <i class="fa fa-phone fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i>Phone: +1 (212) 420-6969<br>
-        <i class="fa fa-envelope fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i>Email: TurnItOn@gmail.com<br>
-      </div>
-      <p>Questions or comments? Email us:</p>
-      <form action="mailto:TurnItOn@gmail.com" method="post" enctype="text/plain">
-        <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
-            <div class="w3-half">
-                <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
-            </div>
-                <div class="w3-half">
-                    <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
-                </div>
-            </div>
-            <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
-                <button class="w3-bar-item button w3-left w3-section" type="submit">
-                    <i class="fa fa-paper-plane"></i> Send Message
-                </button>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- Footer -->
-<footer>
-  <a href="#about" class="button footer"><i class="footer fa fa-arrow-up w3-margin-right"> To the top</i></a>
-  <div class="w3-xlarge w3-section">
-        <a href="https://facebook.com"><i class="footer fa fa-facebook-official"></i></a>
-        <a href="https://instagram.com"><i class="footer fa fa-instagram"></i></a>
-        <a href="https://snapchat.com"><i class="footer fa fa-snapchat"></i></a>
-        <a href="https://twitter.com"><i class="footer fa fa-twitter"></i></a>
-        <a href="https://linkedin.com"><i class="footer fa fa-linkedin"></i></a>
-  </div>
-</footer>
 </body>
 </html>
-
