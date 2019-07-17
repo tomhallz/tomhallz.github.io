@@ -6,19 +6,19 @@
 body {
     margin: 0px;
 }
-span {
+.header-right {
     margin-block-end: 0em;
     margin-block-start: 0em;
     color: #7d2b1f;
     font-family: impact;
 	font-size: 40px;
-	text-align: initial;
 	position: relative;
-	top: -40px;
+	left: 20px;
 }
 #header {
     background-color: #000000;
-	text-align:start;
+	text-align: justify;
+	vertical-align: text-top;
 }
 button {
 	background-color:#000000;
@@ -71,8 +71,10 @@ button:active {
 </head>
 <body>
 <div class="col-sm-6" id="header">
-    <img src="CriminalMinds.png" class="img-responsive" style="height: 30%; width:30%;">
-    <span>Episode Randomizer</span>
+		<img src="CriminalMinds.png" class="img-responsive" style="height: 30%; width:30%;">
+		<div class="header-right">
+			Episode Randomizer
+		</div>
 </div>
 
 <div class="col-sm-3" id="body">
