@@ -41,7 +41,7 @@ button:active {
     margin-top: 15px;
     margin-left: 10px;
 }
-#output {
+#output, #body {
     font-family: Arial, Helvetica, sans-serif;
 }
 </style>
@@ -61,7 +61,14 @@ button:active {
 							       ["The Crimson King","Sick Day","Taboo","Keeper","The Anti-Terror Squad","Elliott's Pond","Mirror Image","Scarecrow","Profiling 202","Seek and Destroy","Surface Tension","A Good Husband","Spencer","Collision Course","Alpha Male","Assistance Is Futile","In The Dark","Hell's Kitchen","True North","Unforgettable","Green Light","Red Light"],
 							       ["Wheels Up","To A Better Place","Blue Angel","Killer App","Lucky Strikes","The Bunker","Dust and Bones","Neon Terror","False Flag","Submerged","Full-Tilt Boogie","Bad Moon on the Rise","Cure","Miasma","Annihilator","Last Gasp","The Capilanos","The Dance of Love","Ex Parte","All You Can Eat","Mixed Signals","Believer"],
 							       ["300","Starter Home","Rule 34","Innocence","The Tall Man","Luke","Twenty Seven","Ashley","Broken Wing","Flesh and Blood","Night Lights","Hamelin","Chameleon","Sick and Evil","Truth or Dare"]];
-        var S = Math.floor(Math.random() * EpisodeNames.length);
+        
+		if(document.getElementById("netflixRadio").checked == true){
+			var S = Math.floor(Math.random() * (EpisodeNames.length-2));
+		}
+		
+		if(document.getElementById("kodiRadio").checked == true){
+			var S = Math.floor(Math.random() * EpisodeNames.length);
+		}
         var E = Math.floor(Math.random() * EpisodeNames[S].length);
         document.getElementById("output").innerHTML = "S"+(S+1)+" E"+(E+1)+": "+EpisodeNames[S][E];
     }
@@ -78,8 +85,10 @@ button:active {
 </div>
 
 <div class="col-sm-3" id="body">
-<button onclick="Randomizer()">New Episode?</button>
-<p id="output"></p>
+	<input id="netflixRadio" type="radio" name="stream" value="netflix" checked>On netFlix? 
+	<input id="kodiRadio"type="radio" name="stream" value="Kodi"> Or on Kodi<br>
+	<button onclick="Randomizer()">New Episode?</button>
+	<p id="output"></p>
 </div>
 
 </body>
