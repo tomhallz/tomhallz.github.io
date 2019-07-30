@@ -56,23 +56,26 @@ input[type='radio']:after {
         display: inline-block;
         visibility: visible;
         border: 2px solid #7d2b1f;
-    }
-	input[type='radio']:checked:after {
-        width: 10px;
-        height: 10px;
-        border-radius: 15px;
-        top: -3px;
-        left: -2px;
-        position: relative;
-        background-color: #7d2b1f;
-        content: '';
-        display: inline-block;
-        visibility: visible;
-    }
-	#radioText {
-		font-weight: bold;
-		font-size: 20px;
-	}
+}
+input[type='radio']:before, input[type='radio']:checked:before {
+        visibility: hidden;
+}
+input[type='radio']:checked:after {
+    width: 10px;
+    height: 10px;
+    border-radius: 15px;
+    top: -3px;
+    left: -2px;
+    position: relative;
+    background-color: #7d2b1f;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+}
+#radioText {
+	font-weight: bold;
+	font-size: 20px;
+}
 </style>
 <script>
     function Randomizer() {
