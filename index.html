@@ -44,6 +44,35 @@ button:active {
 #output, #body {
     font-family: Arial, Helvetica, sans-serif;
 }
+input[type='radio']:after {
+        width: 10px;
+        height: 10px;
+        border-radius: 15px;
+        top: -2px;
+        left: -2px;
+        position: relative;
+        background-color: white;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 2px solid #7d2b1f;
+    }
+	input[type='radio']:checked:after {
+        width: 10px;
+        height: 10px;
+        border-radius: 15px;
+        top: -3px;
+        left: -2px;
+        position: relative;
+        background-color: #7d2b1f;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+    }
+	#radioText {
+		font-weight: bold;
+		font-size: 20px;
+	}
 </style>
 <script>
     function Randomizer() {
@@ -85,8 +114,10 @@ button:active {
 </div>
 
 <div class="col-sm-3" id="body">
-	<input id="netflixRadio" type="radio" name="stream" value="netflix" checked>On netFlix? 
-	<input id="kodiRadio"type="radio" name="stream" value="Kodi"> Or on Kodi<br>
+	<span id="radioText">
+		<input id="netflixRadio" type="radio" name="stream" value="netflix" checked> On Netflix? &nbsp
+		<input id="kodiRadio"type="radio" name="stream" value="Kodi"> Or on Kodi?
+	</span></br></br>
 	<button onclick="Randomizer()">New Episode?</button>
 	<p id="output"></p>
 </div>
