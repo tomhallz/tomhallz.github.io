@@ -66,7 +66,7 @@ button:hover, button:active {
 							       ["The Fisher King, Part 2","P911","The Perfect Storm","Psychodrama","Aftermath","The Boogeyman","North Mammon","Empty Planet","The Last Word","Lessons Learned","Sex, Birth, Death","Profiler, Profiled","No Way Out","The Big Game","Revelations","Fear and Loathing","Distress","Jones","Ashes and Dust","Honor Among Thieves","Open Season","Legacy","No Way Out, Part II: The Evilution of Frank"],
 							       ["Doubt","In Name and Blood","Scared to Death","Children of the Dark","Seven Seconds","About Face","Identity","Lucky","Penelope","True Night","Birthright","3rd Life","Limelight","Damaged","A Higher Power","Elephant's Memory","In Heat","The Crossing","Tabula Rasa","Lo-Fi"],
 							       ["Mayhem","The Angel Maker","Minimal Loss","Paradise","Catching Out","The Instincts","Memoriam","Masterpiece","52 Pickup","Brothers in Arms","Normal","Soul Mates","Bloodline","Cold Comfort","Zoe's Reprise","Pleasure Is My Business","Demonology","Omnivore","House on Fire","Conflicted","A Shade of Gray","The Big Wheel","Roadkill","Amplification","To Hell…","…And Back"],
-							       ["Nameless, Faceless","Haunted","Reckoner","Hopeless","Cradle to Grave","The Eyes Have It","The Performer","Outfoxed","100","The Slave of Duty","Retaliation","The Uncanny Valley","Risky Business","Parasite","Public Enemy","Mosley Lane","Solitary Man","The Fight","A Rite of Passage","…A Thousand Words","Exit Wounds","The Internet Is Forever","Our Darkest Hour"],
+							       ["Nameless, Faceless","Haunted","Reckoner","Hopeless","Cradle to Grave","The Eyes Have It","The Performer","Outfoxed","100","The Slave of Duty","Retaliation","The Uncanny Valley","Risky Business","Parasite","Public Enemy","Mosley Lane","Solitary Man","The Fight","A Rite of Passage","A Thousand Words","Exit Wounds","The Internet Is Forever","Our Darkest Hour"],
 							       ["The Longest Night","JJ","Remembrance of Things Past","Compromising Positions","Safe Haven","Devil's Night","Middle Man","Reflection of Desire","Into the Woods","What Happens at Home","25 to Life","Corazon","The Thirteenth Step","Sense Memory","Today I Do","Coda","Valhalla","Lauren","With Friends Like These...","Hanley Waters","The Stranger","Out of the Light","Big Sea","Supply & Demand",],
 							       ["It Takes a Village","Proof","Dorado Falls","Painless","From Childhood's Hour","Epilogue","There's No Place Like Home","Hope","Self-Fulfilling Prophecy","The Bittersweet Science","True Genius","Unknown Subject","Snake Eyes","Closing Time","A Thin Line","A Family Affair","I Love You, Tommy Brown","Foundation","Heathridge Manor","The Company","Divining Rod","Profiling 101","Hit","Run"],
 							       ["The Silencer","The Pact","Through the Looking Glass","God Complex","The Good Earth","The Apprenticeship","The Fallen","The Wheels on the Bus…","Magnificent Light","The Lesson","Perennials","Zugzwang","Magnum Opus","All That Remains","Broken","Carbon Copy","The Gathering","Restoration","Pay It Forward","Alchemy","Nanny Dearest","#6","Brothers Hotchner","The Replicator"],
@@ -83,8 +83,16 @@ button:hover, button:active {
 		if(document.getElementById("kodiRadio").checked == true){
 			var S = Math.floor(Math.random() * EpisodeNames.length);
 		}
-		if(document.getElementById("threetwelveRadio").checked == true){
-			var S = (Math.floor(Math.random() * (EpisodeNames.length-4)))+2;
+		if(document.getElementById("rangeRadio").checked == true && document.getElementById("seasonRange") != "") {
+			var seasons = document.getElementById("seasonRange").value;
+			if(seasons.search('-') == -1){
+				var S = parseInt(document.getElementById("seasonRange").value)-1;
+			} else {
+				var seasonsParts = seasons.split('-');
+				var var1 = (EpisodeNames.length-seasonsParts[1]) + (seasonsParts[0]-1);
+				var var2 = seasonsParts[0]-1;
+				var S = Math.floor(Math.random() * (EpisodeNames.length-var1)+var2);
+			}
 		}
         var E = Math.floor(Math.random() * EpisodeNames[S].length);
         document.getElementById("output").innerHTML = "S"+(S+1)+" E"+(E+1)+": "+EpisodeNames[S][E];
@@ -95,21 +103,21 @@ button:hover, button:active {
 </head>
 <body>
 	<div class="col-sm-6" id="header">
-		<img src="CriminalMindsLogo.png" class="img-responsive" style="height: 30%; width:30%;">
+		<img src="CriminalMinds Logo.png" class="img-responsive" style="height: 30%; width:30%;">
 		<hr>
 		<div class="header-text">Episode Randomizer</div>
 	</div>
 
 	<div class="col-sm-3" id="body">
-		<span id="radioText">
-			<input id="netflixRadio" type="radio" name="stream" value="netflix" checked>
-				<label for="netflixRadio">On Netflix?</label> &nbsp
-			<input id="kodiRadio"type="radio" name="stream" value="Kodi">
-				<label for="kodiRadio">Or on Kodi?</label> </br>
-			<input id="threetwelveRadio"type="radio" name="stream" value="threetwelve">
-				<label for="threetwelveRadio">Or Seasons 3-12?</label>
-		</span></br></br>
-		<button onclick="Randomizer()">New Episode?</button>
+			<span id="radioText">
+				<input id="netflixRadio" type="radio" name="stream" value="netflix" checked>
+					<label for="netflixRadio">On Netflix?</label> &nbsp
+				<input id="kodiRadio"type="radio" name="stream" value="Kodi">
+					<label for="kodiRadio">Or on Kodi?</label> </br>
+				<input id="rangeRadio"type="radio" name="stream" value="rangeRadio">
+					<label for="rangeRadio">Or Season: <input type="text" id="seasonRange" value="3-12">?</label>
+			</span></br></br>
+			<button onclick="Randomizer()">New Episode?</button>
 		<p id="output"></p>
 	</div>
 	<audio loop autoplay>
