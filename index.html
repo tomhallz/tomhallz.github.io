@@ -84,7 +84,7 @@ button:hover, button:active {
 			var S = Math.floor(Math.random() * EpisodeNames.length);
 		}
 		if(document.getElementById("threetwelveRadio").checked == true){
-			var S = (Math.floor(Math.random() * (EpisodeNames.length-5)))+2;
+			var S = (Math.floor(Math.random() * (EpisodeNames.length-4)))+2;
 		}
         var E = Math.floor(Math.random() * EpisodeNames[S].length);
         document.getElementById("output").innerHTML = "S"+(S+1)+" E"+(E+1)+": "+EpisodeNames[S][E];
