@@ -102,9 +102,9 @@ button:hover, button:active {
 				var S = parseInt(document.getElementById("seasonRange").value)-1;
 			}
 		}
-        var E = Math.floor(Math.random() * EpisodeNames[S].length);
-        document.getElementById("output").innerHTML = "S"+(S+1)+" E"+(E+1)+": "+EpisodeNames[S][E];
-    }
+		var E = Math.floor(Math.random() * EpisodeNames[S].length);
+		document.getElementById("episodeInfo").innerHTML = "S"+(S+1)+" E"+(E+1)+": "+EpisodeNames[S][E];
+	}
 
 </script>
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -135,7 +135,8 @@ button:hover, button:active {
 				</table>
 			</span>
 			<button onclick="Randomizer()">New Episode?</button>
-		<p id="output"></p>
+		<p id="episodeInfo"></p>
+		<p id="episodeDescription"></p>
 	</div>
 	<audio loop autoplay>
 		<source src="CriminalMindsThemeSong.mp3" type="audio/mpeg">
