@@ -42,7 +42,7 @@ input[type=radio]:checked + label {
 	font-weight: normal;
 	text-align: right;
 }
-button {
+button, #footerBTTN:hover, #footerBTTN:active{
 	background-color:#ffffff;
 	border: 3px solid #7d2b1f;
 	border-radius: 10px;
@@ -57,7 +57,7 @@ button {
 	-webkit-transition-duration: 0.4s;
   	transition-duration: 0.4s;
 }
-button:hover, button:active {
+button:hover, button:active, #footerBTTN {
 	background-color:#7d2b1f;
 	border: 3px solid #4b1a13;
 	border-radius: 10px;
@@ -68,6 +68,16 @@ button:hover, button:active {
 	[class*="col-"] {
     	width: 100%;
   	}
+}
+.footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: #7d2b1f;
+	color: white;
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
 }
 </style>
 <script>
@@ -149,7 +159,7 @@ button:hover, button:active {
 					</tr>
 					<tr>
 						<td colspan="2"><input id="rangeRadio"type="radio" name="stream" value="rangeRadio">
-							<label for="rangeRadio">Or Season: <input type="text" id="seasonRange" value="3-12" placeholder="3-12 or 5">?</label></td>
+							<label for="rangeRadio">Or Season: <input type="text" id="seasonRange" value="3-12" placeholder="3-12 or 6 or 3,6,9,12">?</label></td>
 					</tr>
 					<tr>
 						<td id="info" colspan="2">(^Enter 3-12 or 6 or 3,6,9,12)</td>
@@ -163,5 +173,8 @@ button:hover, button:active {
 	<audio loop autoplay>
 		<source src="CriminalMindsThemeSong.mp3" type="audio/mpeg">
 	</audio>
+	<div class="footer">
+		<a href="BlueBloods.html"><button id="footerBTTN">Blue Bloods Episode Randomizer</button></a>
+	</div>
 	</body>
 </html>
