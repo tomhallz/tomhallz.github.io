@@ -12,7 +12,7 @@ body {
 	vertical-align: text-top;
 }
 hr {
-  	border: 1px solid #124081;
+  	border: 1px solid #ffffff;
 	margin: 0px;
 }
 .header-text {
@@ -35,7 +35,7 @@ hr {
 	font-size: 20px;
 }
 input[type=radio]:checked + label {
-  color:#124081;
+  columns: #000000;;
 } 
 #info {
 	font-size: 10px;
@@ -44,9 +44,9 @@ input[type=radio]:checked + label {
 }
 button, #footerBTTN:hover, #footerBTTN:active{
 	background-color:#ffffff;
-	border: 3px solid #124081;
+	border: 3px solid #000000;
 	border-radius: 10px;
-	color:#0d2c58;
+	color: #000000;;
 	display:inline-block;
 	cursor:pointer;
 	font-family:Arial;
@@ -58,8 +58,8 @@ button, #footerBTTN:hover, #footerBTTN:active{
   	transition-duration: 0.4s;
 }
 button:hover, button:active, #footerBTTN {
-	background-color:#124081;
-	border: 3px solid #0d2c58;
+	background-color: #000000;
+	border: 3px solid #000000;
 	border-radius: 10px;
 	color:#ffffff;
 	font-weight: bold;
@@ -74,15 +74,15 @@ button:hover, button:active, #footerBTTN {
 	left: 0;
 	bottom: 0;
 	width: 100%;
-	background-color: #124081;
-	color: white;
 	text-align: center;
+	background-color: #000000;
+	color: white;
 	font-family: Arial, Helvetica, sans-serif;
 }
 </style>
 <script>
     function Randomizer() {
-        var EpisodeCount = [22,22,23,22,22,22,22,22,22];
+        var EpisodeCount = [23,23,24,24,19,25,24,24,24,24,24,24,24,24,24,24];
 
 		if(document.getElementById("netflixRadio").checked == true){
 			var S = Math.floor(Math.random() * (EpisodeCount.length-1));
@@ -113,7 +113,7 @@ button:hover, button:active, #footerBTTN {
 </head>
 <body>
 	<div class="col-sm-6" id="header">
-		<img src="BlueBloods.jpg" class="img-responsive" style="height: 30%; width:30%;">
+		<img src="NCISLogo.png" class="img-responsive" style="height: 30%; width:30%;">
 		<hr>
 		<div class="header-text">Episode Randomizer</div>
 	</div>
@@ -129,10 +129,10 @@ button:hover, button:active, #footerBTTN {
 					</tr>
 					<tr>
 						<td colspan="2"><input id="rangeRadio"type="radio" name="stream" value="rangeRadio">
-							<label for="rangeRadio">Or Season: <input type="text" id="seasonRange" value="3-9" placeholder="3-9 or 6 or 3,6,9">?</label></td>
+							<label for="rangeRadio">Or Season: <input type="text" id="seasonRange" value="4-12" placeholder="4-12 or 8 or 4,6,12,16">?</label></td>
 					</tr>
 					<tr>
-						<td id="info" colspan="2">(^Enter 3-9 or 6 or 3,6,9)</td>
+						<td id="info" colspan="2">(^Enter 4-12 or 8 or 4,6,12,16)</td>
 					</tr>
 				</table>
 			</span>
@@ -140,9 +140,9 @@ button:hover, button:active, #footerBTTN {
 		<p id="episodeInfo"></p>
 	</div>
 	<div class="footer">
-        <span style="text-align: left;">Other Randomizers:</span></br>
+        <span>Other Randomizers:</span></br>
         <a href="index.html"><button id="footerBTTN">Criminal Minds</button></a>
-        <a href="NCIS.html"><button id="footerBTTN">NCIS</button></a>
+        <a href="BlueBloods.html"><button id="footerBTTN">Blue Bloods</button></a>
 	</div>
 	</body>
 </html>
