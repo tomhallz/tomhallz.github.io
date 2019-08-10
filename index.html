@@ -82,6 +82,9 @@ button:hover, button:active, #footerBTTN {
 	text-align: center;
 	font-family: Arial, Helvetica, sans-serif;
 }
+#footerText {
+	padding: 5px;
+}
 </style>
 <script>
     function Randomizer() {
@@ -140,7 +143,6 @@ button:hover, button:active, #footerBTTN {
 		document.getElementById("episodeInfo").innerHTML = "S"+(S+1)+" E"+(E+1)+": "+EpisodeNames[S][E];
 		document.getElementById("episodeDescription").innerHTML = descriptions[S][E];
 	}
-
 </script>
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 </head>
@@ -177,7 +179,7 @@ button:hover, button:active, #footerBTTN {
 		<source src="CriminalMindsThemeSong.mp3" type="audio/mpeg">
 	</audio>
 	<div class="footer">
-			<span style="text-align: left;">Other Randomizers:</span></br>
+			<span id="footerText">Other Randomizers:</span></br>
 			<a href="BlueBloods.html"><button id="footerBTTN">Blue Bloods</button></a>
 			<a href="NCIS.html"><button id="footerBTTN">NCIS</button></a>
 	</div>
