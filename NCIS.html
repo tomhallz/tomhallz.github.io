@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>NCIS Episode Randomizer</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
 <style>
 body {
     margin: 0px;
@@ -20,23 +21,25 @@ hr {
     margin-block-start: 0em;
 	color: #ffffff;
     font-family: Arial, Helvetica, sans-serif;
-	font-size: 35px;
+	font-size: 20px;
 	padding: 5px 10px 10px 10px;
 }
 #body {
-    margin-top: 15px;
-    margin-left: 10px;
+    margin: 5px;
 }
 #output, #body {
     font-family: Arial, Helvetica, sans-serif;
 }
-#radioText {
+#inputTable {
 	font-weight: bold;
-	font-size: 20px;
+	font-size: 18px;
 }
 input[type=radio]:checked + label {
-  columns: #000000;;
-} 
+  columns: #505050;
+}
+input#seasonRange {
+	font-size: 12px;
+}  
 #info {
 	font-size: 10px;
 	font-weight: normal;
@@ -44,30 +47,28 @@ input[type=radio]:checked + label {
 }
 button, #footerBTTN:hover, #footerBTTN:active{
 	background-color:#ffffff;
-	border: 3px solid #000000;
+	border: 1.5px solid #000000;
 	border-radius: 10px;
 	color: #000000;;
 	display:inline-block;
 	cursor:pointer;
-	font-family:Arial;
-	font-size:20px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
 	font-weight:600;
-	padding:4px 15px;
+	padding:0px 10px;
 	text-decoration:none;
 	-webkit-transition-duration: 0.4s;
   	transition-duration: 0.4s;
 }
 button:hover, button:active, #footerBTTN {
 	background-color: #000000;
-	border: 3px solid #000000;
+	border: 1.5px solid #000000;
 	border-radius: 10px;
 	color:#ffffff;
 	font-weight: bold;
 }
-@media only screen and (max-width: 768px) {
-	[class*="col-"] {
-    	width: 100%;
-  	}
+#episodeInfo {
+	height: auto;
 }
 .footer {
 	position: fixed;
@@ -108,44 +109,44 @@ button:hover, button:active, #footerBTTN {
 			}
 		}
 		var E = Math.floor(Math.random() * EpisodeCount[S]);
-		document.getElementById("episodeInfo").innerHTML = "S"+(S+1)+" E"+(E+1);
+		document.getElementById("episodeInfo").innerHTML = "S"+(S+1)+" E"+(E+1) + "<br/><br/>" + document.getElementById("episodeInfo").innerHTML;
 	}
 
 </script>
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 </head>
 <body>
-	<div class="col-sm-6" id="header">
+	<div id="header">
 		<img src="NCISLogo.png" class="img-responsive" style="height: 30%; width:30%;">
 		<hr>
 		<div class="header-text">Episode Randomizer</div>
 	</div>
 
-	<div class="col-sm-6" id="body">
-			<span id="radioText">
-				<table>
+	<div id="body">
+				<table id="inputTable">
 					<tr>
-						<td><input id="netflixRadio" type="radio" name="stream" value="netflix" checked>
+						<td><input id="netflixRadio" type="radio" value="netflix" checked>
 							<label for="netflixRadio">On Netflix?</label></td>
-						<td style="text-align: right"><input id="kodiRadio"type="radio" name="stream" value="Kodi">
+						<td style="text-align: right"><input id="kodiRadio"type="radio" value="Kodi">
 							<label for="kodiRadio">Or on Kodi?</label></td>
 					</tr>
 					<tr>
-						<td colspan="2"><input id="rangeRadio"type="radio" name="stream" value="rangeRadio">
+						<td colspan="2"><input id="rangeRadio"type="radio" value="rangeRadio">
 							<label for="rangeRadio">Or Season: <input type="text" id="seasonRange" value="4-12" placeholder="4-12 or 8 or 4,6,12,16">?</label></td>
 					</tr>
 					<tr>
 						<td id="info">(No. of Seasons: 17)</td><td id="info">(^Enter 4-12 or 8 or 4,6,12,16)</td>
 					</tr>
+					<td colspan="2"><button onclick="Randomizer()">New Episode?</button></td>
+				</tr>
 				</table>
-			</span>
-			<button onclick="Randomizer()">New Episode?</button>
-		<p id="episodeInfo"></p>
+		<p> </p>
+		<div class="col-sm-5" id="episodeInfo"></div>
 	</div>
-	<div class="footer">
+	<!-- <div class="footer">
         <span id="footerText">Other Randomizers:</span></br>
         <a href="index.html"><button id="footerBTTN">Criminal Minds</button></a>
         <a href="BlueBloods.html"><button id="footerBTTN">Blue Bloods</button></a>
-	</div>
+	</div> -->
 	</body>
 </html>
