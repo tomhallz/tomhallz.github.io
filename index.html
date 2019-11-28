@@ -24,12 +24,11 @@ hr {
 	font-size: 35px;
 	padding: 5px 10px 10px 10px;
 }
-#body {
-    margin-top: 15px;
-    margin-left: 10px;
-}
 #output, #body {
     font-family: Arial, Helvetica, sans-serif;
+}
+#body {
+	margin: 5px;
 }
 #radioText {
 	font-weight: bold;
@@ -40,6 +39,10 @@ input#seasonRange {
 }
 input[type=radio]:checked + label {
   color:#7d2b1f;
+}
+label {
+	padding: 0px;
+	margin: 0px;
 } 
 #info {
 	font-size: 10px;
@@ -51,13 +54,13 @@ button, #footerBTTN:hover, #footerBTTN:active{
 	border: 3px solid #7d2b1f;
 	border-radius: 10px;
 	color:#4b1a13;
-	display:inline-block;
-	cursor:pointer;
-	font-family:Arial;
-	font-size:20px;
-	font-weight:600;
-	padding:4px 15px;
-	text-decoration:none;
+	display: inline-block;
+	cursor: pointer;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: 600;
+	padding: 0px 10px;
+	text-decoration: none;
 	-webkit-transition-duration: 0.4s;
   	transition-duration: 0.4s;
 }
@@ -151,10 +154,8 @@ button:hover, button:active, #footerBTTN {
 		<hr>
 		<div class="header-text">Episode Randomizer</div>
 	</div>
-
 	<div id="body">
-			<span id="radioText">
-				<table>
+				<table id="radioText">
 					<tr>
 						<td><input id="netflixRadio" type="radio" name="stream" value="netflix" checked>
 							<label for="netflixRadio">On Netflix?</label></td>
@@ -168,10 +169,10 @@ button:hover, button:active, #footerBTTN {
 					<tr>
 						<td id="info">(No. of Seasons: 14)</td><td id="info">(^Enter 3-12 or 6 or 3,6,9,12)</td>
 					</tr>
+					<tr>
+						<td colspan="2"><button onclick="Randomizer()">New Episode?</button></td>
+					</tr>
 				</table>
-			</span>
-		<p> </p>
-		<button onclick="Randomizer()">New Episode?</button>
 		<p> </p>
 		<div class="col-sm-5" id="episodeInfo"></div>
 	</div>
