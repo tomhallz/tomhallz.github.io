@@ -109,7 +109,11 @@ button:hover, button:active, #footerBTTN {
 			}
 		}
 		var E = Math.floor(Math.random() * EpisodeCount[S]);
-		document.getElementById("episodeInfo").innerHTML = "S"+(S+1)+" E"+(E+1) + "<br/><br/>" + document.getElementById("episodeInfo").innerHTML;
+		if(document.getElementById("episodeInfo").innerHTML.search(EpisodeNames[S][E]) == -1){
+			document.getElementById("episodeInfo").innerHTML = "S"+(S+1)+" E"+(E+1) + "<br/><br/>" + document.getElementById("episodeInfo").innerHTML;
+		} else {
+			Randomizer();
+		}
 	}
 
 </script>

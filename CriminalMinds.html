@@ -142,7 +142,11 @@ button:hover, button:active, #footerBTTN {
 			}
 		}
 		var E = Math.floor(Math.random() * EpisodeNames[S].length);
-		document.getElementById("episodeInfo").innerHTML = "<u>S"+(S+1)+" E"+(E+1)+": "+EpisodeNames[S][E] + "</u><br/>" + descriptions[S][E] + "<br/><br/>" + document.getElementById("episodeInfo").innerHTML;
+		if(document.getElementById("episodeInfo").innerHTML.search(EpisodeNames[S][E]) == -1){
+			document.getElementById("episodeInfo").innerHTML = "<u>S"+(S+1)+" E"+(E+1)+": "+EpisodeNames[S][E] + "</u><br/>" + descriptions[S][E] + "<br/><br/>" + document.getElementById("episodeInfo").innerHTML;
+		} else {
+			Randomizer();
+		}
 	}
 </script>
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
