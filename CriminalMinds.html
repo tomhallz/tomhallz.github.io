@@ -2,8 +2,11 @@
 <html>
 <head>
 	<title>Criminal Minds Episode Randomizer</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
-<style>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<style>
 body {
     margin: 0px;
 }
@@ -15,6 +18,12 @@ body {
 hr {
   	border: 1px solid #7d2b1f;
 	margin: 0px;
+}
+div.dropdown-menu.show::after  {
+	position: absolute; 
+	will-change: transform; 
+	top: 0px; left: 0px; 
+	transform: translate3d(0px, 38px, 0px);
 }
 .header-text {
     margin-block-end: 0em;
@@ -124,7 +133,7 @@ button:hover, button:active, #footerBTTN {
 		if(document.getElementById("netflixRadio").checked == true){
 			var S = Math.floor(Math.random() * (EpisodeNames.length-2));
 		}
-		if(document.getElementById("kodiRadio").checked == true){
+		if(document.getElementById("allSeasonsRadio").checked == true){
 			var S = Math.floor(Math.random() * EpisodeNames.length);
 		}
 		if(document.getElementById("rangeRadio").checked == true && document.getElementById("seasonRange") != "") {
@@ -154,6 +163,15 @@ button:hover, button:active, #footerBTTN {
 <body>
 	<div id="header">
 		<img src="CriminalMinds Logo.png" class="img-responsive" style="height: 15%; width:15%;">
+		<div class="dropdown show">
+			<a class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			  Criminal Minds
+			</a>
+			<div style="left:0px;" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+			  <a class="dropdown-item" href="#">Blue Bloods</a>
+			  <a class="dropdown-item" href="#">NCIS</a>
+			</div>
+		  </div>
 		<hr>
 		<div class="header-text">Episode Randomizer</div>
 	</div>
@@ -162,8 +180,8 @@ button:hover, button:active, #footerBTTN {
 					<tr>
 						<td><input id="netflixRadio" type="radio" value="netflix" name="stream" checked>
 							<label for="netflixRadio">On Netflix?</label></td>
-						<td style="text-align: right"><input id="kodiRadio"type="radio" value="Kodi" name="stream">
-							<label for="kodiRadio">Or on Kodi?</label></td>
+						<td style="text-align: right"><input id="allSeasonsRadio"type="radio" value="Kodi" name="stream">
+							<label for="allSeasonsRadio">Or All Seasons?</label></td>
 					</tr>
 					<tr>
 						<td colspan="2"><input id="rangeRadio" type="radio" value="rangeRadio" name="stream">

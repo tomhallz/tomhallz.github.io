@@ -91,7 +91,7 @@ button:hover, button:active, #footerBTTN {
 		if(document.getElementById("netflixRadio").checked == true){
 			var S = Math.floor(Math.random() * (EpisodeCount.length-1));
 		}
-		if(document.getElementById("kodiRadio").checked == true){
+		if(document.getElementById("allSeasonsRadio").checked == true){
 			var S = Math.floor(Math.random() * EpisodeCount.length);
 		}
 		if(document.getElementById("rangeRadio").checked == true && document.getElementById("seasonRange") != "") {
@@ -131,8 +131,8 @@ button:hover, button:active, #footerBTTN {
 					<tr>
 						<td><input id="netflixRadio" type="radio" value="netflix" name="stream" checked>
 							<label for="netflixRadio">On Netflix?</label></td>
-						<td style="text-align: right"><input id="kodiRadio"type="radio" value="Kodi" name="stream">
-							<label for="kodiRadio">Or on Kodi?</label></td>
+						<td style="text-align: right"><input id="allSeasonsRadio"type="radio" value="Kodi" name="stream">
+							<label for="allSeasonsRadio">Or All Seasons?</label></td>
 					</tr>
 					<tr>
 						<td colspan="2"><input id="rangeRadio"type="radio" value="rangeRadio" name="stream">
