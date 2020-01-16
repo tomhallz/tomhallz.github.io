@@ -31,13 +31,26 @@ a#dropdownMenuLink.btn.btn-secondary.dropdown-toggle {
 	color: #ffffff;
     font-family: Arial, Helvetica, sans-serif;
 	font-size: 20px;
-	padding: 5px 10px 10px 10px;
+	padding: 5px 10px 10px;
 }
 #body {
 	margin: 5px;
 }
 #output, #body {
     font-family: Arial, Helvetica, sans-serif;
+}
+#showDescriptionBx {
+	font-size: 14px;
+	padding: 5px 10px 5px;
+}
+#showDescriptionTitle {
+	font-size: 16px;
+	font-weight: bold;
+	color: #7d2b1f;
+	margin: 0px;
+}
+#showDescriptionTxt {
+	display: none;
 }
 #inputTable {
 	font-weight: bold;
@@ -85,6 +98,18 @@ button:hover, button:active, #footerBTTN {
 }
 </style>
 <script>
+	function showDescription(){
+		if (document.getElementById("showDescriptionTxt").innerHTML.search("Criminal Minds revolves") == -1) {
+			document.getElementById("showDescriptionTitle").innerHTML = "Description -";
+			document.getElementById("showDescriptionTxt").style.display = "block";
+			console.log("Description is Shown");
+		} else {
+			document.getElementById("showDescriptionTitle").innerHTML = "Description +";
+			document.getElementById("showDescriptionTxt").style.display = "none";
+			console.log("Description is not Shown");
+		}
+	}
+
     function Randomizer() {
     var EpisodeNames = [["Extreme Aggressor","Compulsion","Won't Get Fooled Again","Plain Sight","Broken Mirror","L.D.S.K.","The Fox","Natural Born Killer","Derailed","The Popular Kids","Blood Hungry","What Fresh Hell","Poison","Riding the Lightning","Unfinished Business","The Tribe","A Real Rain","Somebody's Watching","Machismo","Charm and Harm","Secrets and Lies","The Fisher King, Part 1"],
 						["The Fisher King, Part 2","P911","The Perfect Storm","Psychodrama","Aftermath","The Boogeyman","North Mammon","Empty Planet","The Last Word","Lessons Learned","Sex, Birth, Death","Profiler, Profiled","No Way Out","The Big Game","Revelations","Fear and Loathing","Distress","Jones","Ashes and Dust","Honor Among Thieves","Open Season","Legacy","No Way Out, Part II: The Evilution of Frank"],
@@ -140,6 +165,7 @@ button:hover, button:active, #footerBTTN {
 				var S = parseInt(document.getElementById("seasonRange").value)-1;
 			}
 		}
+
 		var E = Math.floor(Math.random() * EpisodeNames[S].length);
 		if(document.getElementById("episodeInfo").innerHTML.search("S"+(S+1)+" E"+(E+1)) == -1){
 			document.getElementById("episodeInfo").innerHTML = "<u>S"+(S+1)+" E"+(E+1)+": "+EpisodeNames[S][E] + "</u><br/>" + descriptions[S][E] + "<br/><br/>" + document.getElementById("episodeInfo").innerHTML;
@@ -165,6 +191,25 @@ button:hover, button:active, #footerBTTN {
 		<div class="header-text">Episode Randomizer</div>
 	</div>
 	<div id="body">
+		<div id="showDescriptionBx" style="display: none;">
+			<p id="showDescriptionTitle" onclick="showDescription()">Description +</p>
+			<span class="col-lg-5" id="showDescriptionTxt">
+				&emsp;Criminal Minds revolves around an elite team of FBI profilers who analyze the country's most twisted criminal minds,
+				anticipating their next moves before they strike again. The Behavioral Analysis Unit's most experienced agent is David Rossi,
+				founding member of the BAU, who is essential in helping the team solve new cases.<br>
+				&emsp;Other members include Special Agent Emily Prentiss, the daughter of high-powered diplomats who returns to the team after 
+				being the head profiler at Interpol; Special Agent Dr. Spencer Reid, a classically misunderstood genius whose social IQ is as 
+				low as his intellectual IQ is high; Jennifer "J.J." Jareau, the team's former unit liaison turned profiler, who juggles motherhood 
+				and marriage with the same skill as she solves cases; Penelope Garcia, the team's indispensable computer wizard who helps research 
+				the cases with her unique charm; Dr. Tara Lewis, a forensic psychologist whose expertise is studying and interviewing serial killers 
+				after they've been captured to determine if they are able to stand trial; Luke Alvez, a former Army ranger and excellent tracker recruited 
+				to the BAU from the FBI's Fugitive Task Force; and Special Agent Simmons who joins his colleagues in the BAU after consulting them 
+				when he was a member of the International Response Team. Simmons is an ex-Delta soldier with deft profiling skills and military 
+				special-ops expertise.<br>
+				&emsp;As the team evolves together, the BAU continues its dedication to using their expertise to pinpoint predators' motivations
+				and identify their emotional triggers in the attempt to stop them.
+			</span>
+		</div>
 				<table id="inputTable">
 					<tr>
 						<td><input id="netflixRadio" type="radio" value="netflix" name="stream" checked>
