@@ -39,7 +39,20 @@ a#dropdownMenuLink.btn.btn-secondary.dropdown-toggle {
 #output, #body {
     font-family: Arial, Helvetica, sans-serif;
 }
-
+#showDescriptionBx {
+	font-size: 14px;
+	padding: 5px 10px 5px;
+}
+#showDescriptionTitle {
+	font-size: 19px;
+	font-weight: bold;
+	color: #7d2b1f;
+	margin: 0px;
+	padding: 0px 10px;
+}
+#showDescriptionTxt {
+	display: none;
+}
 #inputTable {
 	font-weight: bold;
 	font-size: 18px;
@@ -86,6 +99,18 @@ button:hover, button:active, #footerBTTN {
 }
 </style>
 <script>
+	function showDescription(){
+		if (document.getElementById("showDescriptionTxt").style.display == "none") {
+			document.getElementById("showDescriptionTitle").innerHTML = "Description &ndash;";
+			document.getElementById("showDescriptionTxt").style.display = "block";
+			console.log("Description is Shown");
+		} else {
+			document.getElementById("showDescriptionTitle").innerHTML = "Description +";
+			document.getElementById("showDescriptionTxt").style.display = "none";
+			console.log("Description is not Shown");
+		}
+	}
+
     function Randomizer() {
         var EpisodeCount = [22,22,23,22,22,22,22,22,22];
 
@@ -136,6 +161,23 @@ button:hover, button:active, #footerBTTN {
 	</div>
 
 	<div id="body">
+		<div id="showDescriptionBx">
+			<p id="showDescriptionTitle" onclick="showDescription()">Description +</p>
+			<span class="col-lg-5" id="showDescriptionTxt">
+				&emsp;Blue Bloods is a drama about a multi-generational family of cops dedicated to New York City law enforcement. Frank Reagan 
+				is the New York Police Commissioner, and heads both the police force and the Reagan brood. He runs his department as diplomatically 
+				as he runs his family, even when dealing with the politics that plagued his unapologetically bold father, Henry, during his stint as Chief. 
+				A source of pride and concern for Frank is his eldest son, Danny, a seasoned detective, family man and Iraq War vet who on occasion uses dubious 
+				tactics to solve cases with his partner, Detective Maria Baez.<br>
+				&emsp;The Reagan women in the family include Erin, a New York Assistant D.A. who also serves as the legal compass for her siblings and father, 
+				as well as a single parent to her teenage daughter, Nicky. Jamie is the youngest Reagan, a Harvard Law graduate and the family's "golden boy."
+				Unable to deny the family tradition, Jamie decided to give up a lucrative future in law and follow in the family footsteps as a cop. 
+				He's found a friend and ally in Eddie, his female partner who keeps him on his toes, and has very different reasons than the Reagans 
+				for joining the police force.<br>
+				&emsp;After several years of working together, Jamie and Eddie finally succumbed to their strong feelings for one another and tied the knot.
+			</span>
+		</div>
+
 			<table id="inputTable">
 				<tr>
 					<td><input id="netflixRadio" type="radio" value="netflix" name="stream" checked>
