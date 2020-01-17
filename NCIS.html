@@ -39,6 +39,20 @@ a#dropdownMenuLink.btn.btn-secondary.dropdown-toggle {
 #output, #body {
     font-family: Arial, Helvetica, sans-serif;
 }
+#showDescriptionBx {
+	font-size: 14px;
+	padding: 5px 10px 5px;
+}
+#showDescriptionTitle {
+	font-size: 19px;
+	font-weight: bold;
+	color: #000000;
+	margin: 0px;
+	padding: 0px 10px;
+}
+#showDescriptionTxt {
+	display: none;
+}
 #inputTable {
 	font-weight: bold;
 	font-size: 18px;
@@ -85,6 +99,18 @@ button:hover, button:active, #footerBTTN {
 }
 </style>
 <script>
+	function showDescription(){
+		if (document.getElementById("showDescriptionTxt").style.display == "none") {
+			document.getElementById("showDescriptionTitle").innerHTML = "Description &ndash;";
+			document.getElementById("showDescriptionTxt").style.display = "block";
+			console.log("Description is Shown");
+		} else {
+			document.getElementById("showDescriptionTitle").innerHTML = "Description +";
+			document.getElementById("showDescriptionTxt").style.display = "none";
+			console.log("Description is not Shown");
+		}
+	}
+
     function Randomizer() {
         var EpisodeCount = [23,23,24,24,19,25,24,24,24,24,24,24,24,24,24,24];
 
@@ -135,6 +161,35 @@ button:hover, button:active, #footerBTTN {
 	</div>
 
 	<div id="body">
+		<div id="showDescriptionBx">
+			<p id="showDescriptionTitle" onclick="showDescription()">Description +</p>
+			<span class="col-lg-5" id="showDescriptionTxt">
+				&emsp;NCIS (Naval Criminal Investigative Service) is more than just 
+				an action drama. With liberal doses of humor, it’s a show that focuses 
+				on the sometimes complex and always amusing dynamics of a team forced to 
+				work together in high-stress situations. NCIS Special Agent Leroy Jethro 
+				Gibbs, a former Marine gunnery sergeant whose skills as an investigator 
+				are unmatched, leads this troupe of colorful personalities. Gibbs, a man 
+				of few words, only needs a look to explain it all. The team includes NCIS 
+				Special Agent Timothy McGee, an MIT graduate with a brilliance for computers;
+				NCIS Special Agent Eleanor "Ellie" Bishop, a mysterious mixture of analytic 
+				brilliance, fierce determination and idealism who specializes in international 
+				threat assessment and global preparation; the charismatic, unpredictable and 
+				resilient NCIS Special Agent Nicholas "Nick" Torres, who has spent most of his 
+				career on solo undercover assignments; and NCIS Special Agent Jacqueline "Jack" 
+				Sloane, who built her reputation as the agency’s premier forensic psychologist 
+				and enjoys challenging Gibbs. Assisting the team as the NCIS Historian is retired 
+				medical examiner Dr. Donald "Ducky" Mallard, who knows it all because he’s seen it all; 
+				Ducky’s protégé, the naïve Jimmy Palmer, who graduated from assistant to fully 
+				licensed medical examiner and now runs the morgue and Forensic Scientist Kasie Hines, 
+				Ducky’s former graduate assistant who impressed Gibbs with her keen forensic skills 
+				during a critical time for the team. Overseeing operations is NCIS Director 
+				Leon Vance, an intelligent, highly trained agent who can always be counted on 
+				to shake up the status quo. From murder and espionage to terrorism and stolen 
+				submarines, these special agents investigate all crimes with Navy or Marine Corps ties.
+			</span>
+		</div>
+		
 				<table id="inputTable">
 					<tr>
 						<td><input id="netflixRadio" type="radio" value="netflix" name="stream" checked>
