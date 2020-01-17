@@ -44,10 +44,11 @@ a#dropdownMenuLink.btn.btn-secondary.dropdown-toggle {
 	padding: 5px 10px 5px;
 }
 #showDescriptionTitle {
-	font-size: 16px;
+	font-size: 19px;
 	font-weight: bold;
 	color: #7d2b1f;
 	margin: 0px;
+	padding: 0px 10px;
 }
 #showDescriptionTxt {
 	display: none;
@@ -99,8 +100,8 @@ button:hover, button:active, #footerBTTN {
 </style>
 <script>
 	function showDescription(){
-		if (document.getElementById("showDescriptionTxt").innerHTML.search("Criminal Minds revolves") == -1) {
-			document.getElementById("showDescriptionTitle").innerHTML = "Description -";
+		if (document.getElementById("showDescriptionTxt").style.display == "none") {
+			document.getElementById("showDescriptionTitle").innerHTML = "Description &ndash;";
 			document.getElementById("showDescriptionTxt").style.display = "block";
 			console.log("Description is Shown");
 		} else {
@@ -191,7 +192,7 @@ button:hover, button:active, #footerBTTN {
 		<div class="header-text">Episode Randomizer</div>
 	</div>
 	<div id="body">
-		<div id="showDescriptionBx" style="display: none;">
+		<div id="showDescriptionBx">
 			<p id="showDescriptionTitle" onclick="showDescription()">Description +</p>
 			<span class="col-lg-5" id="showDescriptionTxt">
 				&emsp;Criminal Minds revolves around an elite team of FBI profilers who analyze the country's most twisted criminal minds,
