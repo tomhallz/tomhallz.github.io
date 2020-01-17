@@ -72,7 +72,7 @@ label {
 	font-weight: normal;
 	text-align: right;
 }
-button, #footerBTTN:hover, #footerBTTN:active{
+button{
 	background-color:#ffffff;
 	border: 1.5px solid #7d2b1f;
 	border-radius: 10px;
@@ -87,7 +87,7 @@ button, #footerBTTN:hover, #footerBTTN:active{
 	-webkit-transition-duration: 0.4s;
   	transition-duration: 0.4s;
 }
-button:hover, button:active, #footerBTTN {
+button:hover, button:active{
 	background-color:#7d2b1f;
 	border: 1.5px solid #4b1a13;
 	border-radius: 10px;
@@ -169,7 +169,7 @@ button:hover, button:active, #footerBTTN {
 
 		var E = Math.floor(Math.random() * EpisodeNames[S].length);
 		if(document.getElementById("episodeInfo").innerHTML.search("S"+(S+1)+" E"+(E+1)) == -1){
-			document.getElementById("episodeInfo").innerHTML = "<u>S"+(S+1)+" E"+(E+1)+": "+EpisodeNames[S][E] + "</u><br/>" + descriptions[S][E] + "<br/><br/>" + document.getElementById("episodeInfo").innerHTML;
+			document.getElementById("episodeInfo").innerHTML = "<u><b style='color: #7d2b1f;'>S"+(S+1)+" E"+(E+1)+": "+EpisodeNames[S][E] + "</b></u><br/>" + descriptions[S][E] + "<br/><br/>" + document.getElementById("episodeInfo").innerHTML;
 		} else {
 			Randomizer();
 		}
@@ -211,7 +211,7 @@ button:hover, button:active, #footerBTTN {
 				and identify their emotional triggers in the attempt to stop them.
 			</span>
 		</div>
-		
+
 				<table id="inputTable">
 					<tr>
 						<td><input id="netflixRadio" type="radio" value="netflix" name="stream" checked>
