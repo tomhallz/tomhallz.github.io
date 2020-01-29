@@ -147,7 +147,7 @@ button:hover, button:active{
 						];
 		
 		if(document.getElementById("netflixRadio").checked == true){
-			var S = Math.floor(Math.random() * (EpisodeNames.length-2));
+			var S = Math.floor(Math.random() * (EpisodeNames.length-3));
 		}
 		if(document.getElementById("allSeasonsRadio").checked == true){
 			var S = Math.floor(Math.random() * EpisodeNames.length);
@@ -156,9 +156,7 @@ button:hover, button:active{
 			var seasons = document.getElementById("seasonRange").value;
 			if(seasons.search('-') != -1){
 				var seasonsParts = seasons.split('-');
-				var var1 = (EpisodeNames.length-seasonsParts[1]) + (seasonsParts[0]-1);
-				var var2 = seasonsParts[0]-1;
-				var S = Math.floor(Math.random() * (EpisodeNames.length-var1)+var2);
+				var S = Math.floor(Math.random() * (seasonsParts[1]-seasonsParts[0])+ seasonsParts[0]);
 			} else if (seasons.search(',') != -1) {
 				var seasonParts = seasons.split(',');
 				var S = parseInt(seasonParts[Math.floor(Math.random() * seasonParts.length)])-1;
