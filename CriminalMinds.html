@@ -156,7 +156,7 @@ button:hover, button:active{
 			var seasons = document.getElementById("seasonRange").value;
 			if(seasons.search('-') != -1){
 				var seasonsParts = seasons.split('-');
-				var S = Math.floor(Math.random() * (seasonsParts[1]-seasonsParts[0])+ seasonsParts[0]);
+				var S = Math.floor(Math.random() * (seasonsParts[1]-seasonsParts[0]) + seasonsParts[0]);
 			} else if (seasons.search(',') != -1) {
 				var seasonParts = seasons.split(',');
 				var S = parseInt(seasonParts[Math.floor(Math.random() * seasonParts.length)])-1;
