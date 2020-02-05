@@ -172,7 +172,7 @@ button:hover, button:active{
 	}
 	function showFullSeasonButton(){
 		var seasons = document.getElementById("seasonRange").value;
-		if(seasons.search('-') == -1 && seasons.search(',') == -1 && seasons.length <= 2) {
+		if(seasons.search('-') == -1 && seasons.search(',') == -1 && seasons.length <= 2 && seasons.length >= 1) {
 			document.getElementById("FullSeasonBTTN").style.display = "block";
 		} else {
 			document.getElementById("FullSeasonBTTN").style.display = "none";
@@ -238,13 +238,12 @@ button:hover, button:active{
 					<tr>
 						<td colspan="2"><input id="rangeRadio" type="radio" value="rangeRadio" name="stream">
 							<label for="rangeRadio">Or Season: <input type="text" id="seasonRange" value="3-12" placeholder="3-12 or 6 or 3,6,9,12" onkeyup="showFullSeasonButton()">?</label></td>
-						<td><button id="FullSeasonBTTN" onclick="getFullSeason()">Show Full Season</button></td>
 					</tr>
 					<tr>
 						<td id="info">(No. of Seasons: 15)</td><td id="info">(^Enter 3-12 or 6 or 3,6,9,12)</td>
 					</tr>
 					<tr>
-						<td colspan="2"><button onclick="Randomizer()">New Episode?</button></td>
+						<td><button onclick="Randomizer()">New Episode?</button></td><td><button id="FullSeasonBTTN" onclick="getFullSeason()">Show Full Season</button></td>
 					</tr>
 				</table>
 		<p> </p>
