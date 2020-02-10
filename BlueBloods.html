@@ -19,13 +19,34 @@ hr {
   	border: 1px solid #124081;
 	margin: 0px;
 }
-a#dropdownMenuLink.btn.btn-secondary.dropdown-toggle {
+#dropdownTitle {
+	margin-left: 10px;
 	background-color: #000000;
 	border: 1px solid #000000;
 	color: #124081;
 	font-size: 28px;
+	font-weight: bold;
 }
-.header-text {
+#dropdownLinks {
+	background-color: #124081;
+	font-size: 28px;
+	padding-left: 10px;
+	display: none;
+}
+#dropdownLinks div a:link, #dropdownLinks div a:visited {
+	color: #ffffff;
+	font-size: 28px;
+	padding-left: 10px;
+	text-decoration: none;
+}
+#dropdownLinks div a:hover, #dropdownLinks div a:active {
+	color: #ffffff;
+	font-size: 28px;
+	padding-left: 10px;
+	text-decoration: none;
+	font-weight: bold;
+}
+#header-text {
     margin-block-end: 0em;
     margin-block-start: 0em;
 	color: #ffffff;
@@ -108,6 +129,16 @@ footer a:link, footer a:visited, footer a:hover, footer a:active {
 }
 </style>
 <script>
+	function showDropDown(){
+		if (document.getElementById("dropdownLinks").style.display == "none") {
+			document.getElementById("dropdownTitle").innerHTML = "Blue Bloods &ndash;";
+			document.getElementById("dropdownLinks").style.display = "block";
+		} else {
+			document.getElementById("dropdownTitle").innerHTML = "Blue Bloods +";
+			document.getElementById("dropdownLinks").style.display = "none";
+		}
+	}
+
 	function showDescription(){
 		if (document.getElementById("showDescriptionTxt").style.display == "none") {
 			document.getElementById("showDescriptionTitle").innerHTML = "Description &ndash;";
@@ -156,17 +187,13 @@ footer a:link, footer a:visited, footer a:hover, footer a:active {
 </head>
 <body>
 	<div id="header">
-		<div class="dropdown show">
-			<a class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Blue Bloods
-			</a>
-			<div style="left:0px;" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-			  <a class="dropdown-item" href="CriminalMinds.html">Criminal Minds</a>
-			  <a class="dropdown-item" href="NCIS.html">NCIS</a>
-			</div>
-		  </div>
+		<div onclick="showDropDown()" id="dropdownTitle">Blue Bloods +</div>
+		<div id="dropdownLinks">
+			<div><a href="CriminalMinds.html">Criminal Minds</a></div>
+			<div><a href="NCIS.html">NCIS</a></div>
+		</div>
 		<hr>
-		<div class="header-text">Episode Randomizer</div>
+		<div id="header-text">Episode Randomizer</div>
 	</div>
 
 	<div id="body">

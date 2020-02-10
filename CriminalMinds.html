@@ -19,13 +19,34 @@ hr {
   	border: 1px solid #7d2b1f;
 	margin: 0px;
 }
-a#dropdownMenuLink.btn.btn-secondary.dropdown-toggle {
+#dropdownTitle {
+	margin-left: 10px;
 	background-color: #000000;
 	border: 1px solid #000000;
 	color: #7d2b1f;
 	font-size: 28px;
+	font-weight: bold;
 }
-.header-text {
+#dropdownLinks {
+	background-color: #7d2b1f;
+	font-size: 28px;
+	padding-left: 10px;
+	display: none;
+}
+#dropdownLinks div a:link, #dropdownLinks div a:visited {
+	color: #ffffff;
+	font-size: 28px;
+	padding-left: 10px;
+	text-decoration: none;
+}
+#dropdownLinks div a:hover, #dropdownLinks div a:active {
+	color: #ffffff;
+	font-size: 28px;
+	padding-left: 10px;
+	text-decoration: none;
+	font-weight: bold;
+}
+#header-text {
     margin-block-end: 0em;
     margin-block-start: 0em;
 	color: #ffffff;
@@ -140,6 +161,16 @@ footer a:link, footer a:visited, footer a:hover, footer a:active {
 						["When messianic cult leader Benjamin David Merva and his followers take Reid and Garcia hostage, the BAU juggles rescuing their colleagues and stopping Merva from carrying out a sinister agenda.","When nine sets of mummified female remains are excavated from a remote South Carolina cabin, the BAU sets out to determine if a two-person killing team was responsible or if the crimes were committed by a lone killer. Meanwhile, Rossi continues to rekindle his relationship with Krystall.","When six women in the Washington metropolitan area receive packages containing disarticulated male appendages, the BAU juggles identifying the victim and establishing a connection between the six recipients. Meanwhile, Simmons and Kristy try to communicate with their son, David, after he is suspended for hitting a classmate.","When a Tallahassee, Florida woman is bludgeoned to death and her husband's alibi rules him out as the prime suspect, the BAU works with local authorities in Tallahassee and Arlington, Virginia to identify the killer. Meanwhile, Prentiss grows increasingly concerned about Garcia's behavior.","When three East Allegheny, Pennsylvania teenage girls go missing and one resurfaces the following day with limited memories, the BAU juggles locating the other girls and establishing the role a regional urban legend plays in the disappearances. Meanwhile, JJ finds herself flashing back to the events surrounding her sister's suicide.","When four people living in various cities along the East Coast are tortured and murdered over a three-day span, the BAU attempts to connect the spree with a DEA-Federal Police manhunt for an infamous Mexican cartel hitman. Meanwhile, Alvez juggles moving in with his girlfriend and becoming emotionally involved in the investigation.","When three people in the Washington metropolitan area are hospitalized with life-threatening injuries after being attacked with a machete, the BAU works with the local field office to track down a spree killer driven to take a life every twenty-seven minutes.","When a Plymouth, New Hampshire couple is gunned down in their sleep and their eight-year-old daughter is reported missing, the BAU searches for a budding abductor set on recreating a ghost from his past. Meanwhile, Rossi plans to take the next step in his relationship with Krystall.","When seven recovering Los Angeles, California drug addicts die from opiate overdoses hours after completing various in-patient addiction treatments, the BAU sets out to profile a budding Angel of Mercy bent on relieving his victims of their suffering. Meanwhile, Lewis finds herself forced to face her past after reconnecting with her ex-husband.","When two local attorneys are abducted, tortured, and found with their hearts crudely cut out of their chests, the BAU attempts to establish a connection between the investigation and a case from their past. Meanwhile, Prentiss juggles wrestling with her inner demons and organizing a romantic date with SSA Andrew Mendoza.","When the mysterious abduction of a Portland, Oregon man is connected to an unsolved double homicide, the BAU sets out to track down a killer who blinds his victims before forcing them to play a deadly cat and mouse game. Meanwhile, Alvez invites the rest of the team to a housewarming party at his new apartment.","When three Iowa children disappear from their homes on the same night and surveillance cameras in a local park capture the children freely entering their captor's van, the BAU sets out to profile a budding injustice collector with dark motives. Meanwhile, JJ spends personal time with her mother, Sandy, after renovation jobs force them out of their respective houses.","After returning from an investigation in Nashville, Tennessee, Rossi breaks down in front of Krystall and begins to question his actions as he recounts the events surrounding the BAU's attempt to track down a con artist-turned-serial killer with misogynistic attitudes.","When four Lewiston, Maine residents are stabbed to death in their homes, the BAU searches for a paranormal-obsessed serial killer who operates on the belief that the residences they target are haunted. Meanwhile, Rossi juggles tracking down wanted killer Everett Lynch and recovering from his near-death experience.","The BAU returns to Los Angeles to track down a possible spree killer after two people are killed in car accidents-turned-shootings. Meanwhile, Rossi and Krystall prepare for their wedding and an unexpected confession promises to change the course of everyone's lives forever."],
 						["The BAU team investigates an UnSub with striking similarities to Rossi's latest obsession, The Chameleon, a.k.a. Everett Lynch, who nearly killed him and then disappeared.","With a member of the BAU in the hospital, the team searches for Everett Lynch, and his daughter, Grace. Also, Spencer has a meaningful visit with his mother, Diana Reid, while she's experiencing a period of lucidity.","The BAU investigates seemingly random fatal explosions throughout Kentucky and Tennessee.","The members of the BAU enjoy a Saturday off in vastly different ways; Rossi and Prentiss help Simmons assemble a new crib; Garcia leads a hacking competition; Dr. Reid strikes up a conversation with a woman named Maxine.","Following a series of fatal shootings, the BAU team travels to Des Plaines, Ill to investigate what appears to be a copycat serial killer. There efforts are thrown off track when members of the BAU are targeted.","After a father and daughter get kidnapped, a former foe of the BAU returns with very specific demands for Dr. Reid that gives a whole new meaning to the phrase ‘Wheels Up.’","When the BAU team travels to Denver to investigate several murders, Prentiss is forced to evaluate her relationship with Special Agent Andrew Mendoza."]
 						];
+	function showDropDown(){
+		if (document.getElementById("dropdownLinks").style.display == "none") {
+			document.getElementById("dropdownTitle").innerHTML = "Criminal Minds &ndash;";
+			document.getElementById("dropdownLinks").style.display = "block";
+		} else {
+			document.getElementById("dropdownTitle").innerHTML = "Criminal Minds +";
+			document.getElementById("dropdownLinks").style.display = "none";
+		}
+	}
+
 	function showDescription(){
 		if (document.getElementById("showDescriptionTxt").style.display == "none") {
 			document.getElementById("showDescriptionTitle").innerHTML = "Description &ndash;";
@@ -205,17 +236,13 @@ footer a:link, footer a:visited, footer a:hover, footer a:active {
 </head>
 <body>
 	<div id="header">
-		<div class="dropdown show">
-			<a class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			  Criminal Minds
-			</a>
-			<div style="left:0px;" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-			  <a class="dropdown-item" href="BlueBloods.html">Blue Bloods</a>
-			  <a class="dropdown-item" href="NCIS.html">NCIS</a>
-			</div>
-		  </div>
+		<div onclick="showDropDown()" id="dropdownTitle">Criminal Minds +</div>
+		<div id="dropdownLinks">
+			<div><a href="BlueBloods.html">Blue Bloods</a></div>
+			<div><a href="NCIS.html">NCIS</a></div>
+		</div>
 		<hr>
-		<div class="header-text">Episode Randomizer</div>
+		<div id="header-text">Episode Randomizer</div>
 	</div>
 	<div id="body">
 		<div id="showDescriptionBx">
