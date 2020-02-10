@@ -151,10 +151,10 @@ button:hover, button:active{
 		if(document.getElementById("rangeRadio").checked == true && document.getElementById("seasonRange") != "") {
 			var seasons = document.getElementById("seasonRange").value;
 			if(seasons.search('-') != -1){
-				var seasonParts = seasons.split('-');
-				var fnum = parseInt(seasonParts[0]);
-				var secnum = parseInt(seasonParts[1]);
-				var S = Math.floor(Math.random() * (secnum-fnum+1) + (fnum-1));
+				var seasonsParts = seasons.split('-');
+				var var1 = (EpisodeNames.length-seasonsParts[1]) + (seasonsParts[0]-1);
+				var var2 = seasonsParts[0]-1;
+				var S = Math.floor(Math.random() * (EpisodeNames.length-var1)+var2);
 			} else if (seasons.search(',') != -1) {
 				var seasonParts = seasons.split(',');
 				var S = parseInt(seasonParts[Math.floor(Math.random() * seasonParts.length)])-1;
