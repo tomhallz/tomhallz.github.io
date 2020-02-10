@@ -172,7 +172,8 @@ button:hover, button:active{
 	}
 	function showFullSeasonButton(){
 		var seasons = document.getElementById("seasonRange").value;
-		if(seasons.search('-') == -1 && seasons.search(',') == -1 && seasons.length <= 2 && seasons.length >= 1) {
+		if(seasons.search('-') == -1 && seasons.search(',') == -1 && seasons.length <= 2 && seasons.length >= 1 && parseInt(seasons)<=EpisodeNames.length) {
+			
 			document.getElementById("FullSeasonBTTN").style.display = "block";
 		} else {
 			document.getElementById("FullSeasonBTTN").style.display = "none";
@@ -180,11 +181,11 @@ button:hover, button:active{
 	}
 	function getFullSeason(){
 		var seasons = document.getElementById("seasonRange").value;
-		if((seasons.indexOf("-") == -1 && seasons.indexOf(',') == -1) && seasons.length <= 2 && seasons.length >= 1) {
+		if((seasons.indexOf("-") == -1 && seasons.indexOf(',') == -1) && seasons.length <= 2 && seasons.length >= 1 && parseInt(seasons)<=EpisodeNames.length) {
 			var SelectedSeason = parseInt(seasons)-1;
 			var fullSelectedSeason = "";
 			for(var E=0;E<EpisodeNames[SelectedSeason].length;E++){
-			fullSelectedSeason += "<u><b style='color: #7d2b1f;'>S"+(SelectedSeason+1)+" E"+(E+1)+": "+EpisodeNames[SelectedSeason][E] + "</b></u><br/>" + descriptions[SelectedSeason][E] + "<br/><br/>";
+				fullSelectedSeason += "<u><b style='color: #7d2b1f;'>S"+(SelectedSeason+1)+" E"+(E+1)+": "+EpisodeNames[SelectedSeason][E] + "</b></u><br/>" + descriptions[SelectedSeason][E] + "<br/><br/>";
 			}
 			document.getElementById("episodeInfo").innerHTML = fullSelectedSeason + document.getElementById("episodeInfo").innerHTML;
 		}
