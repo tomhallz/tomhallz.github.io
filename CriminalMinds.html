@@ -84,6 +84,15 @@ input#seasonRange {
 input[type=radio]:checked + label {
   color:#7d2b1f;
 }
+input#seasonRange {
+	font-size: 18px;
+	border-top-style: hidden;
+	border-right-style: hidden;
+	border-left-style: hidden;
+	border-bottom-style: groove;
+	outline: none;
+	Border-radius: 0px;
+}
 label {
 	padding: 0px;
 	margin: 0px;
@@ -117,6 +126,11 @@ button:hover, button:active{
 }
 #episodeInfo {
 	height: auto;
+}
+#EpisodeTitle {
+	color:#7d2b1f;
+	text-decoration: underline;
+	text-decoration-color: #7d2b1f;
 }
 footer a:link, footer a:visited, footer a:hover, footer a:active {
 	font-size: 30px;
@@ -225,7 +239,7 @@ footer a:link, footer a:visited, footer a:hover, footer a:active {
 			var SelectedSeason = parseInt(seasons)-1;
 			var fullSelectedSeason = "";
 			for(var E=0;E<EpisodeNames[SelectedSeason].length;E++){
-				fullSelectedSeason += "<u><b style='color: #7d2b1f;'>S"+(SelectedSeason+1)+" E"+(E+1)+": "+EpisodeNames[SelectedSeason][E] + "</b></u><br/>" + descriptions[SelectedSeason][E] + "<br/><br/>";
+				fullSelectedSeason += "<b style='color:#7d2b1f;text-decoration: underline;'>S"+(SelectedSeason+1)+" E"+(E+1)+": "+EpisodeNames[SelectedSeason][E] + "</b><br/>" + descriptions[SelectedSeason][E] + "<br/><br/>";
 			}
 			document.getElementById("episodeInfo").innerHTML = fullSelectedSeason + document.getElementById("episodeInfo").innerHTML;
 		}
@@ -239,6 +253,7 @@ footer a:link, footer a:visited, footer a:hover, footer a:active {
 		<div onclick="showDropDown()" id="dropdownTitle">Criminal Minds +</div>
 		<div id="dropdownLinks">
 			<div><a href="BlueBloods.html">Blue Bloods</a></div>
+			<div><a href="RickandMorty.html">Rick and Morty</a></div>
 			<div><a href="NCIS.html">NCIS</a></div>
 		</div>
 		<hr>
@@ -262,6 +277,7 @@ footer a:link, footer a:visited, footer a:hover, footer a:active {
 				special-ops expertise.<br>
 				&emsp;As the team evolves together, the BAU continues its dedication to using their expertise to pinpoint predators' motivations
 				and identify their emotional triggers in the attempt to stop them.
+				
 			</span>
 		</div>
 
@@ -269,7 +285,7 @@ footer a:link, footer a:visited, footer a:hover, footer a:active {
 					<tr>
 						<td><input id="netflixRadio" type="radio" value="netflix" name="stream" checked>
 							<label for="netflixRadio">On Netflix?</label></td>
-						<td style="text-align: right"><input id="allSeasonsRadio"type="radio" value="Kodi" name="stream">
+						<td style="text-align: right"><input id="allSeasonsRadio"type="radio" value="AllSeasons" name="stream">
 							<label for="allSeasonsRadio">Or All Seasons?</label></td>
 					</tr>
 					<tr>

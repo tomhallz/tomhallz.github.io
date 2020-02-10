@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rick and Morty Episode Randomizer</title>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<style>
+    /*
+    Green: #9ac34e
+    Blue: #01afc7
+    */
+body {
+    margin: 0px;
+}
+#header {
+    background-color: #01afc7;
+	text-align: justify;
+	vertical-align: text-top;
+}
+hr {
+  	border: 1px solid #9ac34e;
+	margin: 0px;
+}
+img {
+	height: 50px;
+}
+#dropdownTitle {
+	margin-left: 10px;
+	background-color: #01afc7;
+	border: 1px solid #01afc7;
+	color: #9ac34e;
+	font-size: 28px;
+	font-weight: bold;
+}
+#dropdownLinks {
+	background-color: #9ac34e;
+	font-size: 28px;
+	padding-left: 10px;
+	display: none;
+	color: #01afc7;
+	font-weight: bold;
+}
+#dropdownLinks div a:link, #dropdownLinks div a:visited {
+	color: #ffffff;
+	font-size: 28px;
+	padding-left: 10px;
+	text-decoration: none;
+}
+#dropdownLinks div a:hover, #dropdownLinks div a:active {
+	color: #01afc7;
+	font-size: 28px;
+	padding-left: 10px;
+	text-decoration: none;
+	font-weight: bold;
+}
+#header-text {
+    margin-block-end: 0em;
+    margin-block-start: 0em;
+	color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	padding: 5px 10px 10px;
+}
+#body {
+	margin: 5px;
+}
+#output, #body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+#showDescriptionBx {
+	font-size: 14px;
+	padding: 5px 10px 5px;
+}
+#showDescriptionTitle {
+	font-size: 19px;
+	font-weight: bold;
+	color: #01afc7;
+	margin: 0px;
+	padding: 0px 10px;
+}
+#showDescriptionTxt, #FullSeasonBTTN {
+	display: none;
+}
+#inputTable {
+	font-weight: bold;
+	font-size: 18px;
+}
+input#seasonRange {
+	font-size: 12px;
+}
+input[type=radio]:checked + label {
+  color:#01afc7;
+}
+input#seasonRange {
+	font-size: 18px;
+	border-top-style: hidden;
+	border-right-style: hidden;
+	border-left-style: hidden;
+	border-bottom-style: groove;
+	outline: none;
+	Border-radius: 0px;
+}
+label {
+	padding: 0px;
+	margin: 0px;
+} 
+#info {
+	font-size: 10px;
+	font-weight: normal;
+	text-align: right;
+}
+button{
+	background-color:#ffffff;
+	border: 1.5px solid #01afc7;
+	border-radius: 10px;
+	color:#9ac34e;
+	display: inline-block;
+	cursor: pointer;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: 600;
+	padding: 0px 10px;
+	text-decoration: none;
+	-webkit-transition-duration: 0.4s;
+  	transition-duration: 0.4s;
+}
+button:hover, button:active{
+	background-color:#01afc7;
+	border: 1.5px solid #9ac34e;
+	border-radius: 10px;
+	color:#ffffff;
+	font-weight: bold;
+}
+#episodeInfo {
+	height: auto;
+}
+#EpisodeTitle {
+	color:#01afc7;
+	text-decoration: underline;
+	text-decoration-color: #01afc7;
+}
+footer a:link, footer a:visited, footer a:hover, footer a:active {
+	font-size: 30px;
+	color: #01afc7;
+	font-weight: bold;
+	position: fixed;
+	bottom: 15px;
+	right: 10px;
+	text-decoration: none;
+}
+</style>
+<script>
+	var EpisodeNames = [["Pilot","Lawnmower Dog","Anatomy Park","M. Night Shaym-Aliens!","Meeseeks and Destroy","Rick Potion #9","Raising Gazorpazorp","Rixty Minutes","Something Ricked This Way Comes","Close Rick-counters of the Rick Kind","Ricksy Business"],
+                        ["A Rickle in Time","Mortynight Run","Auto Erotic Assimilation","Total Rickall","Get Schwifty","The Ricks Must Be Crazy","Big Trouble in Little Sanchez","Interdimensional Cable 2: Tempting Fate","Look Who's Purging Now","The Wedding Squanchers"],
+                        ["The Rickshank Rickdemption","Rickmancing the Stone","Pickle Rick","Vindicators 3: The Return of Worldender","The Whirly Dirly Conspiracy","Rest and Ricklaxation","The Ricklantis Mixup","Morty's Mind Blowers","The ABC's of Beth","The Rickchurian Mortydate"],
+                        ["Edge of Tomorty: Rick Die Rickpeat","The Old Man and the Seat","One Crew over the Crewcoo's Morty","Claw and Hoarder: Special Ricktim's Morty","Rattlestar Ricklactica"]
+                        ];
+
+	var descriptions = [["A strangely eccentric genius scientist and inventor, moves into the home of his daughter and her family and begins to strongly influence his young grandson.","Rick helps Jerry out with the dog.","Its Christmas and Rick shrinks Morty, injecting him into a homeless man to save Anatomy Park. Jerry tries to have a Christmas free of electronic devices, but regrets his decision when his parents introduce him to their new friend.","Rick and Morty try to get to the bottom of a mystery.","Rick provides the family with a solution to their problems, freeing him up to go on an adventure led by Morty.","After Rick gives Morty a love potion for prom, things quickly spiral out of control when the serum splices with the flu - causing it to spread. Rick and Morty scramble to cure the crisis, making matters worse in the process.","Morty becomes a father to an alien baby, while Rick and Summer get trapped in a dangerous dimension. ","Rick hooks up the family's TV with interdimensional cable, allowing them to watch infinite TV from across the multiverse. ","Summer gets a job at a pawn shop owned by the devil. Jerry helps Morty with his science fair project.","Rick, falsely blamed for Murder by the council of Ricks, begins a cross-dimensional pursuit with the authorities while attempting to prove his innocence. ","Beth and Jerry head for an iceberg of a date leaving Rick in charge. Morty doesn't get to go on any more adventures if the house isn't in the same condition when they get back. "],
+						["Having restarted time, Rick, Morty and Summer are in a quantum-uncertain state of existence. An argument leads to the creation of two alternate timelines, which need to be stitched back together fast if they are to escape quantum collapse.","Rick and Morty try to save a gas life form while Jerry resides in a daycare made for Jerrys. ","Rick gets emotional. Beth and Jerry get into a fight.","The Smith house is locked down after parasites threaten to take over the world by multiplying through flashbacks.","Rick and morty must aid Earth after a giant head disrupts the planet, demanding to see a hit song performed.","Rick is having trouble with his car and they have to fix it by traveling to the microverse.","Rick joins in on some hijinks by transferring his consciousness into teenage 'Tiny Rick.' Beth and Jerry sort out their relationship.","Jerry is faced with the difficult decision of losing his manhood in order to save an alien leader from imminent death. Meanwhile, Rick, Morty and Summer explore the possibilities of interdimensional television.","Rick and Morty arrive on an alien planet to fix their ship just as the day of the purge begins there, Jerry and Summer work on their father-daughter relationship, but his lack of employment keeps coming up.","The Smith family is invited to the wedding of Rick's best friend, Birdperson. Things go south when it's discovered that the bride isn't who she says she is. "]
+						["Rick, still in galactic prison, puts an intricate escape plan into action. Back on Earth, which is now under federation control, Morty and Summer have an argument about their grandpa.","With the kids dealing with their parents' divorce, Rick takes them to a Mad Max-style universe where he tries to steal a green crystal from a group of scavengers.","Rick turns himself into a pickle while Beth, Summer, and Morty go to family therapy. ","Rick and Morty are summoned by the Vindicators to stop Worldender but end up in a deathtrap conceived by Drunk Rick.","Rick takes Jerry on a sympathy adventure to a resort where everyone is immortal when there, and Jerry meets some old acquaintances of Rick's who want payback.","Following a stressful adventure, Rick and Morty go on a break to a spa where they remove their toxins, which in turn take a form of their own.","Whilst Rick and Morty go off to adventure in Atlantis, we take a look at how the Citadel has rebuilt itself since both Rick and Morty visited.","Rick reveals to Morty his 'Mortys mind blowers', a collection of memories Morty asked Rick to erase from his mind.","Rick brings Beth to a world he created for her when she was younger while Beth looks for a long-lost childhood friend trapped there for years.","Rick and Morty are called upon by the president to kill a vicious alien in the secret tunnels under the White House."],
+						["Rick brings Morty to a planet containing crystals that show whoever is touching them all the ways they may die depending on their choices.","Rick goes to his private bathroom to find that someone else has used it. Jerry creates an app with an unlikely alien and Morty pays the price.","One Crew Over The Crewcoo's Morty Lots of twists and turns this time Broh. Wear your helmets.","Special Ricktims Morty Morty gets a dragon in this one broh. It's a wild ride broh.","Morty discovers a race of intelligent space snakes after suffering a potentially lethal bite. Jerry attempts to prove that he isn't completely incompetent."],
+						];
+	function showDropDown(){
+		if (document.getElementById("dropdownLinks").style.display == "none") {
+			document.getElementById("dropdownTitle").innerHTML = "<img src='RickandMorty.png'> &ndash;";
+			document.getElementById("dropdownLinks").style.display = "block";
+		} else {
+			document.getElementById("dropdownTitle").innerHTML = "<img src='RickandMorty.png'> +";
+			document.getElementById("dropdownLinks").style.display = "none";
+		}
+	}
+
+	function showDescription(){
+		if (document.getElementById("showDescriptionTxt").style.display == "none") {
+			document.getElementById("showDescriptionTitle").innerHTML = "Description &ndash;";
+			document.getElementById("showDescriptionTxt").style.display = "block";
+		} else {
+			document.getElementById("showDescriptionTitle").innerHTML = "Description +";
+			document.getElementById("showDescriptionTxt").style.display = "none";
+		}
+	}
+
+    function Randomizer() {
+		if(document.getElementById("allSeasonsRadio").checked == true){
+			var S = Math.floor(Math.random() * EpisodeNames.length);
+		}
+		if(document.getElementById("rangeRadio").checked == true && document.getElementById("seasonRange") != "") {
+			var seasons = document.getElementById("seasonRange").value;
+			if(seasons.search('-') != -1){
+				var seasonsParts = seasons.split('-');
+				var var1 = (EpisodeNames.length-seasonsParts[1]) + (seasonsParts[0]-1);
+				var var2 = seasonsParts[0]-1;
+				var S = Math.floor(Math.random() * (EpisodeNames.length-var1)+var2);
+			} else if (seasons.search(',') != -1) {
+				var seasonParts = seasons.split(',');
+				var S = parseInt(seasonParts[Math.floor(Math.random() * seasonParts.length)])-1;
+			} else {
+				var S = parseInt(document.getElementById("seasonRange").value)-1;
+			}
+		}
+
+		var E = Math.floor(Math.random() * EpisodeNames[S].length);
+		if(document.getElementById("episodeInfo").innerHTML.search("S"+(S+1)+" E"+(E+1)) == -1){
+			document.getElementById("episodeInfo").innerHTML = "<u><b style='color: #01afc7;'>S"+(S+1)+" E"+(E+1)+": "+EpisodeNames[S][E] + "</b></u><br/>" + descriptions[S][E] + "<br/><br/>" + document.getElementById("episodeInfo").innerHTML;
+		} else {
+			Randomizer();
+		}
+	}
+	function showFullSeasonButton(){
+		var seasons = document.getElementById("seasonRange").value;
+		if(seasons.search('-') == -1 && seasons.search(',') == -1 && seasons.length <= 2 && seasons.length >= 1 && parseInt(seasons)<=EpisodeNames.length) {
+			
+			document.getElementById("FullSeasonBTTN").style.display = "block";
+		} else {
+			document.getElementById("FullSeasonBTTN").style.display = "none";
+		}
+	}
+	function getFullSeason(){
+		var seasons = document.getElementById("seasonRange").value;
+		if((seasons.indexOf("-") == -1 && seasons.indexOf(',') == -1) && seasons.length <= 2 && seasons.length >= 1 && parseInt(seasons)<=EpisodeNames.length) {
+			var SelectedSeason = parseInt(seasons)-1;
+			var fullSelectedSeason = "";
+			for(var E=0;E<EpisodeNames[SelectedSeason].length;E++){
+				fullSelectedSeason += "<b style='color:#01afc7;text-decoration: underline;'>S"+(SelectedSeason+1)+" E"+(E+1)+": "+EpisodeNames[SelectedSeason][E] + "</b><br/>" + descriptions[SelectedSeason][E] + "<br/><br/>";
+			}
+			document.getElementById("episodeInfo").innerHTML = fullSelectedSeason + document.getElementById("episodeInfo").innerHTML;
+		}
+		seasons = "";
+	}
+</script>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+</head>
+<body>
+	<div id="header">
+		<div onclick="showDropDown()" id="dropdownTitle"><img src="RickandMorty.png"> +</div>
+		<div id="dropdownLinks">
+			<div><a href="BlueBloods.html">Blue Bloods</a></div>
+			<div><a href="CriminalMinds.html">Criminal Minds</a></div>
+			<div><a href="NCIS.html">NCIS</a></div>
+		</div>
+		<hr>
+		<div id="header-text">Episode Randomizer</div>
+	</div>
+	<div id="body">
+		<div id="showDescriptionBx">
+			<p id="showDescriptionTitle" onclick="showDescription()">Description +</p>
+			<span class="col-lg-5" id="showDescriptionTxt">
+				&emsp;After having been missing for nearly 20 years, Rick Sanchez suddenly
+				arrives at daughter Beth's doorstep to move in with her and her family. Although
+				Beth welcomes Rick into her home, her husband, Jerry, isn't as happy about the
+				family reunion. Jerry is concerned about Rick, a sociopathic scientist, using the
+				garage as his personal laboratory. In the lab, Rick works on a number of sci-fi gadgets,
+				some of which could be considered dangerous. But that's not all Rick does that concerns
+				Jerry. He also goes on adventures across the universe that often involve his grandchildren,
+				Morty and Summer.
+			</span>
+		</div>
+
+				<table id="inputTable">
+					<tr>
+						<td><input id="allSeasonsRadio"type="radio" value="AllSeasons" name="stream">
+							<label for="allSeasonsRadio">Or All Seasons?</label></td>
+					</tr>
+					<tr>
+						<td colspan="2"><input id="rangeRadio" type="radio" value="rangeRadio" name="stream">
+							<label for="rangeRadio">Or Season: <input type="text" id="seasonRange" value="3-12" placeholder="3-12 or 6 or 3,6,9,12" onkeyup="showFullSeasonButton()">?</label></td>
+					</tr>
+					<tr>
+						<td id="info">(No. of Seasons: 4)</td><td id="info">(^Enter 1-3 or 3 or 1,3,4)</td>
+					</tr>
+					<tr>
+						<td><button onclick="Randomizer()">New Episode?</button></td><td><button id="FullSeasonBTTN" onclick="getFullSeason()">Show Full Season</button></td>
+					</tr>
+				</table>
+		<p> </p>
+		<div class="col-sm-5" id="episodeInfo"></div>
+	</div>
+
+	<footer>
+		<a href="#header">&uarr;</a>
+	</footer>
+	</body>
+</html>
