@@ -218,7 +218,7 @@ footer a#DownArrow:link, footer a#DownArrow:visited, footer a#DownArrow:hover, f
 
 		var E = Math.floor(Math.random() * EpisodeNames[S].length);
 		if(document.getElementById("episodeInfo").innerHTML.search("S"+(S+1)+" E"+(E+1)) == -1){
-			document.getElementById("episodeInfo").innerHTML = "<u><b style='color: #01afc7;'>S"+(S+1)+" E"+(E+1)+": "+EpisodeNames[S][E] + "</b></u><br/>" + descriptions[S][E] + "<br/><br/>" + document.getElementById("episodeInfo").innerHTML;
+			document.getElementById("episodeInfo").innerHTML = "<u><b style='color: #01afc7; text-decoration: underline;'>S"+(S+1)+" E"+(E+1)+": "+EpisodeNames[S][E] + "</b></u><br/>" + descriptions[S][E] + "<br/><br/>" + document.getElementById("episodeInfo").innerHTML;
 		} else {
 			Randomizer();
 		}
