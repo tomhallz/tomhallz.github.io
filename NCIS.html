@@ -93,46 +93,24 @@ label {
 	font-weight: normal;
 	text-align: right;
 }
-button, #footerBTTN:hover, #footerBTTN:active{
-	background-color:#ffffff;
-	border: 1.5px solid #000000;
-	border-radius: 10px;
-	color: #000000;;
-	display:inline-block;
-	cursor:pointer;
-	font-family:Arial, Helvetica, sans-serif;
-	font-size:12px;
-	font-weight:600;
-	padding:0px 10px;
-	text-decoration:none;
-	-webkit-transition-duration: 0.4s;
-  	transition-duration: 0.4s;
-}
-button:hover, button:active, #footerBTTN {
-	background-color: #000000;
-	border: 1.5px solid #000000;
-	border-radius: 10px;
-	color:#ffffff;
-	font-weight: bold;
-}
 #episodeInfo {
 	height: auto;
 }
-footer a:link, footer a:visited, footer a:hover, footer a:active {
-	font-size: 30px;
-	color: #7d2b1f;
-	font-weight: bold;
-	position: fixed;
-	bottom: 15px;
-	right: 10px;
-	text-decoration: none;
-}
-footer a:link, footer a:visited, footer a:hover, footer a:active {
+footer a#UpArrow:link, footer a#UpArrow:visited, footer a#UpArrow:hover, footer a#UpArrow:active {
 	font-size: 30px;
 	color: #000000;
 	font-weight: bold;
 	position: fixed;
-	bottom: 15px;
+	bottom: 35px;
+	right: 10px;
+	text-decoration: none;
+}
+footer a#DownArrow:link, footer a#DownArrow:visited, footer a#DownArrow:hover, footer a#DownArrow:active {
+	font-size: 30px;
+	color: #000000;
+	font-weight: bold;
+	position: fixed;
+	bottom: 5px;
 	right: 10px;
 	text-decoration: none;
 }
@@ -255,10 +233,12 @@ footer a:link, footer a:visited, footer a:hover, footer a:active {
 				</table>
 		<p> </p>
 		<div class="col-sm-5" id="episodeInfo"></div>
-	</div>
-
-	<footer>
-		<a href="#header">&uarr;</a>
-	</footer>
+		<span id="Bottom"></span>
+		</div>
+	
+		<footer>
+			<a id="UpArrow" href="#header">&uarr;</a>
+			<a id="DownArrow" href="#Bottom">&darr;</a>
+		</footer>
 	</body>
 </html>
