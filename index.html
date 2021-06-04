@@ -2,30 +2,40 @@
 <html>
     <head>
         <title>Thomas Hallinger</title>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>   
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="index.css">
         <script src="index.js"></script> 
     </head>
     <body>
-        <div class="navbar">
-            <a href="#home">Home</a>
-            <a href="#news">About Me</a>
-            <a href="#news">Resume</a>
+        <div class="navbar" id="Home">
+            <a id="navbarName" href="#Home">T H</a>
+            <a href="#AboutMe">About Me</a>
+            <a href="#Resume">Resume</a>
             <div class="dropdown">
               <button class="dropbtn">Portfolio 
                 <i class="fa fa-caret-down"></i>
               </button>
               <div class="dropdown-content">
-                <a href="#">Criminal Minds Randomizer</a>
-                <a href="#">Rick and Morty Randomizer</a>
-                <a href="#">Blue Bloods Randomizer</a>
-                <a href="#">NCIS Randomizer</a>
+                <a href="./EpisodeRand/CriminalMinds.html">Criminal Minds Randomizer</a>
+                <a href="./EpisodeRand/RickandMorty.html">Rick and Morty Randomizer</a>
+                <a href="./EpisodeRand/BlueBloods.html">Blue Bloods Randomizer</a>
+                <a href="./EpisodeRand/NCIS.html">NCIS Randomizer</a>
               </div>
             </div> 
           </div>
+        <div class="row" id="AboutMe">
+            <div class="column" id="ProfilePic">
+                <img src="ProfilePic.png">
+            </div>
+            <div class="column" id="ProfileCaption">
+                <h2>Thomas Hallinger</h2>
+                Lorem ipsum dolor sit amet, ei quem novum debitis eum, per at ullum audiam, ea vel feugiat scaevola. Sea ex propriae eligendi, ad duis illud moderatius vim. Liber ullamcorper id cum. Simul forensibus id per, ad has invenire conceptam definiebas.
+                Malis ubique id pri, mel an putent constituto. Vix tollit mucius repudiare et. Et ius altera explicari patrioque. Ad eos falli luptatum suscipiantur, cu corpora mandamus nec. Eu qui idque putent, vis affert facete singulis ut. Alii consetetur an est, quo ea dolorum singulis consequat.
+            </div>
+        </div>
+        <hr style="border: 1.5px solid #035A9D;">
+        <iframe src="T_Hallinger_Resume.pdf" width="100%" height="500px" style="overflow:hidden; border: none;"></iframe>
     </body>
 </html>
